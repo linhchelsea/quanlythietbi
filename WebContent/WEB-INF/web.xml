@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>demoProject</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>IndexController</servlet-name>
+    <servlet-class>controller.IndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexController</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserIndexController</servlet-name>
+    <servlet-class>controller.UserIndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserIndexController</servlet-name>
+    <url-pattern>/users</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	<servlet-name>UserCreateController</servlet-name>
+	<servlet-class>controller.UserCreateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>UserCreateController</servlet-name>
+	<url-pattern>/user-create</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	<servlet-name>UserEditController</servlet-name>
+	<servlet-class>controller.UserEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>UserEditController</servlet-name>
+	<url-pattern>/user-edit</url-pattern>
+  </servlet-mapping>
+</web-app>
