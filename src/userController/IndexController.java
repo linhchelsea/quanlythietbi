@@ -1,6 +1,7 @@
-package controller;
+package userController;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserCreateController
+ * Servlet implementation class IndexController
  */
-public class UserCreateController extends HttpServlet {
+public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserCreateController() {
+    public IndexController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,6 +28,7 @@ public class UserCreateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -34,7 +36,10 @@ public class UserCreateController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/user/user-create.jsp");
+		Random ran = new Random();
+		int number = ran.nextInt(100)+1;
+		request.setAttribute("number", number);
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 	}
 

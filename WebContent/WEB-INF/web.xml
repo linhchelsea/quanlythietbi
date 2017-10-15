@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>IndexController</servlet-name>
-    <servlet-class>controller.IndexController</servlet-class>
+    <servlet-class>userController.IndexController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>IndexController</servlet-name>
@@ -19,26 +19,50 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>UserIndexController</servlet-name>
-    <servlet-class>controller.UserIndexController</servlet-class>
+    <servlet-class>userController.UserIndexController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserIndexController</servlet-name>
     <url-pattern>/users</url-pattern>
   </servlet-mapping>
   <servlet>
-	<servlet-name>UserCreateController</servlet-name>
-	<servlet-class>controller.UserCreateController</servlet-class>
+    <servlet-name>UserCreateController</servlet-name>
+    <servlet-class>userController.UserCreateController</servlet-class>
   </servlet>
   <servlet-mapping>
-	<servlet-name>UserCreateController</servlet-name>
-	<url-pattern>/user-create</url-pattern>
+    <servlet-name>UserCreateController</servlet-name>
+    <url-pattern>/user-create</url-pattern>
   </servlet-mapping>
   <servlet>
-	<servlet-name>UserEditController</servlet-name>
-	<servlet-class>controller.UserEditController</servlet-class>
+    <servlet-name>UserStoreController</servlet-name>
+    <servlet-class>userController.UserStoreController</servlet-class>
   </servlet>
   <servlet-mapping>
-	<servlet-name>UserEditController</servlet-name>
-	<url-pattern>/user-edit</url-pattern>
+    <servlet-name>UserStoreController</servlet-name>
+    <url-pattern>/user-store</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserEditController</servlet-name>
+    <servlet-class>userController.UserEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserEditController</servlet-name>
+    <url-pattern>/user-edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserUpdateController</servlet-name>
+    <servlet-class>userController.UserUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserUpdateController</servlet-name>
+    <url-pattern>/user-update</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserDeleteController</servlet-name>
+    <servlet-class>userController.UserDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserDeleteController</servlet-name>
+    <url-pattern>/user-delete</url-pattern>
   </servlet-mapping>
 </web-app>
