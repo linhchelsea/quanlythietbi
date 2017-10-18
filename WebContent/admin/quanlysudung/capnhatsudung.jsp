@@ -62,7 +62,7 @@
                   <td>Đang sử dụng</td>
                   <td class="text-center">
                   	<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModelChiTiet">Chi tiết</button>
-          			<a href="<%= request.getContextPath() %>/user-edit" class="btn btn-warning">Kết thúc</a>
+                  	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModelKetThuc">Kết thúc</button>
                   </td>
                 </tr>
               </tbody>
@@ -136,18 +136,22 @@
 	          <table>
 	          	<th colspan="2" style="color: green;">Danh sách thiết bị</th>
 	          	<tr>
-	          		<td>1&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>3&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>5&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          	</tr>
-	          	<tr>
-	          		<td>6&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>10&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>15&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>11&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>12&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	          		<td>
+	          			<table border="1">
+			          	<tr>
+			          		<th class="text-center" style="padding: 0 15px;">#</th>
+			          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
+			          	</tr>
+			          	<tr>
+			          		<td class="text-center">1</td>
+			          		<td class="text-center">10</td>
+			          	</tr>
+			          	<tr>
+			          		<td class="text-center">2</td>
+			          		<td class="text-center">14</td>
+			          	</tr>
+			          </table>
+	          		</td>
 	          	</tr>
 	          </table>
 	        </div>
@@ -228,6 +232,91 @@
 	      </div>
 	      
 	    </div>
+	  </div>
+	  
+	  <!-- Modal ket thuc-->
+	  <div class="modal fade" id="ModelKetThuc" role="dialog">
+	    <div class="modal-dialog ">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title">Hoàn trả thiết bị</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <div class="modal-body">
+	          <table>
+	          	<th colspan="2" style="color: green;">Thông tin người mượn</th>
+	          	<tr>
+	          		<td style="font-weight: bold;">Mã người dùng:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	          		<td>1</td>
+	          	</tr>
+	          	<tr>
+	          		<td style="font-weight: bold;">Họ tên:</td>
+	          		<td>Phan Thanh Thuận</td>
+	          	</tr>
+	          	<tr>
+	          		<td style="font-weight: bold;">Phòng ban:</td>
+	          		<td>Kế toán</td>
+	          	</tr>
+	          </table>
+	          <hr>
+	          <table>
+	          	<th colspan="2" style="color: green;">Chi tiết thiết bị</th>
+	          	<tr>
+	          		<td style="font-weight: bold;">Tên thiết bị:</td>
+	          		<td>Màn hình LG</td>
+	          	</tr>
+	          	<tr>
+	          		<td style="font-weight: bold;">Loại thiết bị:</td>
+	          		<td>Màn hình</td>
+	          	</tr>
+	          	<tr>
+	          		<td style="font-weight: bold;">Số lượng mượn:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	          		<td>10</td>
+	          	</tr>
+	          </table>
+	          <hr>
+	          <table>
+	          	<th colspan="2" style="color: green;">Sử dụng</th>
+	          	<tr>
+	          		<td style="font-weight: bold;">Bắt đầu:</td>
+	          		<td>15/10/2017 8:00 AM</td>
+	          	</tr>
+	          	<tr>
+	          		<td style="font-weight: bold;">Kết thúc:</td>
+	          		<td>15/10/2017 8:00 AM</td>
+	          	</tr>
+	          </table>
+	          <hr>
+	          <table>
+	          	<th colspan="2" style="color: green;">Danh sách thiết bị</th>
+	          	<tr>
+	          		<td>
+	          			<table border="1">
+			          	<tr>
+			          		<th class="text-center" style="padding: 0 15px;">#</th>
+			          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
+			          	</tr>
+			          	<tr>
+			          		<td class="text-center">1</td>
+			          		<td class="text-center">10</td>
+			          	</tr>
+			          	<tr>
+			          		<td class="text-center">2</td>
+			          		<td class="text-center">14</td>
+			          	</tr>
+			          </table>
+	          		</td>
+	          	</tr>
+	          </table>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-warning">Kết thúc</button>
+	        </div>
+	      </div>
+	      
+	    </div>a
 	  </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
