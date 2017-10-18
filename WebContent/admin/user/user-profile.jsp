@@ -10,14 +10,14 @@
         <li class="breadcrumb-item">
           <a href="#">Người dùng</a>
         </li>
-        <li class="breadcrumb-item active">Cập nhật người dùng</li>
+        <li class="breadcrumb-item active">Thông tin tài khoản</li>
       </ol>
       <form>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="tendangnhap">Tên đăng nhập</label>
-                <input class="form-control" type="text" name="tendangnhap">
+                <input class="form-control" type="text" name="tendangnhap" disabled="disabled">
               </div>
               <div class="col-md-6">
                 <label for="tennguoidung">Tên người dùng (Họ và tên)</label>
@@ -74,7 +74,7 @@
             <div class="form-row">      
            		<div class="col-md-6">
                 <label for="PhanQuyen">Phân quyền</label>
-                <select class="form-control" name="PhanQuyen">
+                <select class="form-control" name="PhanQuyen" disabled="disabled">
                 	<option value="1">Người mượn</option>
                 	<option value="2">Nhân Viên</option>
                 	<option value="3">Quản trị Viên</option>
@@ -88,14 +88,8 @@
           </div>
           <div class="form-group">
           <div class="form-row">
-          	  <div class="col-md-4">
-                <input class="form-control btn btn-danger" type="reset" name="Reset" value="NHẬP LẠI">
-              </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <input class="form-control btn btn-success" type="submit" name="CapNhat" value="CẬP NHẬT">
-              </div>
-              <div class="col-md-4">
-                <a href="" class="btn btn-warning form-control">CẤP MẬT KHẨU MỚI</a>
               </div>
           </div>
           </div>

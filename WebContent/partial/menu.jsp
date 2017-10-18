@@ -92,7 +92,7 @@
           </form>
         </li>
         <li>
-        	<a class="nav-link" data-toggle="modal" data-target="#profileModal">
+        	<a href="<%=request.getContextPath() %>/user-profile" class="btn btn-primary">
         		<span style="color:#fbcb00">Nguyen Manh Linh</span>
         	</a>
         </li>

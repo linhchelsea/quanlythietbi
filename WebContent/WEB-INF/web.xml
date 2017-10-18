@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>demoProject</display-name>
+  <display-name>CNPM</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -64,5 +64,82 @@
   <servlet-mapping>
     <servlet-name>UserDeleteController</servlet-name>
     <url-pattern>/user-delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserProfileController</servlet-name>
+    <servlet-class>userController.UserProfileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserProfileController</servlet-name>
+    <url-pattern>/user-profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiIndexController</servlet-name>
+    <servlet-class>thietBiController.ThietBiIndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiIndexController</servlet-name>
+    <url-pattern>/thietbi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiThemController</servlet-name>
+    <servlet-class>thietBiController.ThietBiThemController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiThemController</servlet-name>
+    <url-pattern>/thietbi-them</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiSuaController</servlet-name>
+    <servlet-class>thietBiController.ThietBiSuaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiSuaController</servlet-name>
+    <url-pattern>/thietbi-sua</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiTimKiemController</servlet-name>
+    <servlet-class>thietBiController.ThietBiTimKiemController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiTimKiemController</servlet-name>
+    <url-pattern>/thietbi-timkiem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiKetQuaTimKiemController</servlet-name>
+    <servlet-class>thietBiController.ThietBiKetQuaTimKiemController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiKetQuaTimKiemController</servlet-name>
+    <url-pattern>/thietbi-ketquatimkiem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiChiTietController</servlet-name>
+    <servlet-class>thietBiController.ThietBiChiTietController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiChiTietController</servlet-name>
+    <url-pattern>/thietbi-chitiet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>sdtbIndexController</servlet-name>
+    <servlet-class>sdtbController.sdtbIndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sdtbIndexController</servlet-name>
+    <url-pattern>/sdtb-danhsach</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>sdtbDangKyController</servlet-name>
+    <servlet-class>sdtbController.sdtbDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sdtbDangKyController</servlet-name>
+    <url-pattern>/sdtb-dangky</url-pattern>
   </servlet-mapping>
 </web-app>
