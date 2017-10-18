@@ -9,7 +9,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
-          <a class="nav-link" href="<%= request.getContextPath() %>/users">
+          <a class="nav-link" href="<%= request.getContextPath() %>/usersDiva">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Quản lý nhân viên</span>
           </a>
