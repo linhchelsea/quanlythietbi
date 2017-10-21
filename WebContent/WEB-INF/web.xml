@@ -138,6 +138,7 @@
     <url-pattern>/sdtb-dangky</url-pattern>
   </servlet-mapping>
   
+  
   <!-- CHUC NANG NGUOI MUON -->
   <servlet>
     <servlet-name>DanhSachThietBiController</servlet-name>
@@ -148,4 +149,38 @@
     <url-pattern>/cnnm-danhsachthietbi</url-pattern>
   </servlet-mapping>
   
+
+  
+  <servlet>
+    <servlet-name>BaoDuongIndexController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongIndexController</servlet-name>
+    <url-pattern>/baoduong</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongThemThietBiController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongThemThietBiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongThemThietBiController</servlet-name>
+    <url-pattern>/baoduong-themthietbi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongCapNhatController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongCapNhatController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongCapNhatController</servlet-name>
+    <url-pattern>/baoduong-capnhat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongDangKyController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongDangKyController</servlet-name>
+    <url-pattern>/baoduong-dangky</url-pattern>
+  </servlet-mapping>
 </web-app>

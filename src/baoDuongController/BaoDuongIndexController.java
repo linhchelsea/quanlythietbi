@@ -1,4 +1,4 @@
-package chucNangNguoiMuonController;
+package baoDuongController;
 
 import java.io.IOException;
 
@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.baoduongModel;
+
 /**
- * Servlet implementation class DanhSachThietBiController
+ * Servlet implementation class BaoDuongIndexController
  */
-public class DanhSachThietBiController extends HttpServlet {
+
+public class BaoDuongIndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DanhSachThietBiController() {
+    public BaoDuongIndexController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +30,26 @@ public class DanhSachThietBiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);	}
+		doPost(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/chucnangnguoimuon/danhsachthietbi.jsp");
+		baoduongModel mBD = new baoduongModel();
+		int sodong = 2;
+		int tong = mBD.getTotal();
+		int sotrang = (int) Math.ceil((float)tong/sodong);
+		int tranghientai = 1;
+		if(request.getParameter("page")!=null){
+			tranghientai = Integer.parseInt(request.getParameter("page"));
+		}
+		int offset = (tranghientai-1)*sodong;
+		request.setAttribute("alBaoDuong", mBD.getList(offset,sodong));
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlybaoduong/baoduong-danhsach.jsp");
 		rd.forward(request, response);
 	}
+
 }
