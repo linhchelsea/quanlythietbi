@@ -1,3 +1,4 @@
+<%@page import="beans.LoaiThietBi"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/partial/header.jsp" %>
@@ -11,20 +12,21 @@
           <a href="#">Đăng ký sử dụng</a>
         </li>
       </ol>
+      <%LoaiThietBi loaiTB = (LoaiThietBi) request.getAttribute("loaiTB"); %>
       <form>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-4">
                 <label for="mathietbi">Mã thiết bị</label>
-                <input class="form-control" type="text" name="mathietbi" disabled="disabled" value="1">
+                <input class="form-control" type="text" name="mathietbi" disabled="disabled" value="<%=loaiTB.getMaLoai()%>">
               </div>
               <div class="col-md-4">
                 <label for="tenthietbi">Tên thiết bị</label>
-                <input class="form-control" type="text" name="tenthietbi" disabled="disabled" value="Màn hình LG">
+                <input class="form-control" type="text" name="tenthietbi" disabled="disabled" value="<%=loaiTB.getTenLoai()%>">
               </div>
               <div class="col-md-4">
                 <label for="loaithietbi">Loại thiết bị</label>
-                <input class="form-control" type="text" name="loaithietbi" disabled="disabled" value="Màn hình">
+                <input class="form-control" type="text" name="loaithietbi" disabled="disabled" value="<%=loaiTB.getLoaiCha().getTenLoai()%>">
               </div>
             </div>
           </div>

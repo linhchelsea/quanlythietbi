@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.BaoDuong;
+import beans.ThongTinBaoDuong;
 import library.LibraryConnectDB;
 
 public class baoduongModel {
@@ -19,8 +19,8 @@ public class baoduongModel {
 		lcdb = new LibraryConnectDB();
 	}
 	
-	public ArrayList<BaoDuong> getList(int offset, int sodong) {		
-		ArrayList<BaoDuong> result = new ArrayList<>();
+	public ArrayList<ThongTinBaoDuong> getList(int offset, int sodong) {		
+		ArrayList<ThongTinBaoDuong> result = new ArrayList<>();
 		conn = lcdb.GetConnectMySQL();
 		String query = "SELECT * FROM ThongTinBaoDuong ORDER BY MaTTBD ASC LIMIT ?,?";
 		try {
@@ -28,16 +28,11 @@ public class baoduongModel {
 			pst.setInt(1, offset);
 			pst.setInt(2, sodong);
 			rs = pst.executeQuery();
+			ThongTinBaoDuong.Builder buider = new ThongTinBaoDuong.Builder();
+			ThongTinBaoDuong objTTBD = null;
 			while(rs.next()){
-				BaoDuong baoDuongObj = new BaoDuong(rs.getInt("MaTTBD"),
-													rs.getInt("MaTTBD"),
-													rs.getInt("MaTTBD"),
-													rs.getInt("MaTTBD"), 
-													rs.getInt("MaTTBD"),
-													rs.getString("LyDoBaoDuong"),
-													rs.getDate("NgayBatDau"),
-													rs.getDate("NgayKetThuc"));
-				result.add(baoDuongObj);
+				objTTBD = buider.setMaLoaiTB(rs.getInt("MaTTBD")).build();
+				result.add(objTTBD);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

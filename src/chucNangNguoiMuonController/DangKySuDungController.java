@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.LoaiThietBi;
 import models.loaithietbiModels;
-import models.thietbiModels;
 
 /**
- * Servlet implementation class DanhSachThietBiController
+ * Servlet implementation class DangKySuDungController
  */
-public class DanhSachThietBiController extends HttpServlet {
+public class DangKySuDungController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DanhSachThietBiController() {
+    public DangKySuDungController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,16 +30,22 @@ public class DanhSachThietBiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);	}
+		doPost(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		loaithietbiModels mLoaiThietBi = new loaithietbiModels();
-		request.setAttribute("alLoaiThietBi", mLoaiThietBi.getList());
+		loaithietbiModels mLoaiTB = new loaithietbiModels();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/chucnangnguoimuon/danhsachthietbi.jsp");
+		//Lay loai thiet bi
+		int maLoaiTB = Integer.parseInt(request.getParameter("maLoaiTB"));
+		LoaiThietBi LoaiTB = mLoaiTB.getItemByMaLoai(maLoaiTB);
+		request.setAttribute("loaiTB", LoaiTB);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/chucnangnguoimuon/dangkysudung.jsp");
 		rd.forward(request, response);
 	}
+
 }
