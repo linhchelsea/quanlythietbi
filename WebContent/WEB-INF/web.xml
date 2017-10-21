@@ -121,11 +121,6 @@
     <servlet-name>ThietBiChiTietController</servlet-name>
     <url-pattern>/thietbi-chitiet</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
   <servlet>
     <servlet-name>sdtbIndexController</servlet-name>
     <servlet-class>sdtbController.sdtbIndexController</servlet-class>
@@ -142,4 +137,15 @@
     <servlet-name>sdtbDangKyController</servlet-name>
     <url-pattern>/sdtb-dangky</url-pattern>
   </servlet-mapping>
+  
+  <!-- CHUC NANG NGUOI MUON -->
+  <servlet>
+    <servlet-name>DanhSachThietBiController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.DanhSachThietBiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanhSachThietBiController</servlet-name>
+    <url-pattern>/cnnm-danhsachthietbi</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
