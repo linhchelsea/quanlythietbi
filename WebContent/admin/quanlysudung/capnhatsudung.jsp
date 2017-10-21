@@ -141,14 +141,17 @@
 			          	<tr>
 			          		<th class="text-center" style="padding: 0 15px;">#</th>
 			          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
+			          		<th class="text-center" style="padding: 0 15px;">Tên thiết bị</th>
 			          	</tr>
 			          	<tr>
 			          		<td class="text-center">1</td>
 			          		<td class="text-center">10</td>
+			          		<td class="text-center">LG - v02</td>
 			          	</tr>
 			          	<tr>
 			          		<td class="text-center">2</td>
 			          		<td class="text-center">14</td>
+			          		<td class="text-center">LG - v02</td>
 			          	</tr>
 			          </table>
 	          		</td>
@@ -208,20 +211,23 @@
 	          	<tr>
 	          		<th class="text-center" style="padding: 0 15px;">#</th>
 	          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
+	          		<th class="text-center" style="padding: 0 15px;">Tên thiết bị</th>
 	          		<th style="padding: 0 15px;">Chọn</th>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-center">1</td>
 	          		<td class="text-center">10</td>
+	          		<td class="text-center">LG - v01</td>
 	          		<td class="text-center"><input type="checkbox" name="thietbi" value="10"></td>
 	          	</tr>
 	          	<tr>
 	          		<td class="text-center">2</td>
 	          		<td class="text-center">14</td>
+	          		<td class="text-center">LG - v01</td>
 	          		<td class="text-center"><input type="checkbox" name="thietbi" value="14"></td>
 	          	</tr>
 	          	<tr>
-	          		<td class="text-center" style="font-weight: bold; color: red;" colspan="2">Đã chọn</td>
+	          		<td class="text-center" style="font-weight: bold; color: red;" colspan="3">Đã chọn</td>
 	          		<td class="text-center" style="font-weight: bold; color: red;">1</td>
 	          	</tr>
 	          </table>
@@ -297,14 +303,17 @@
 			          	<tr>
 			          		<th class="text-center" style="padding: 0 15px;">#</th>
 			          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
+			          		<th class="text-center" style="padding: 0 15px;">Tên thiết bị</th>
 			          	</tr>
 			          	<tr>
 			          		<td class="text-center">1</td>
 			          		<td class="text-center">10</td>
+			          		<td class="text-center">LG - v01</td>
 			          	</tr>
 			          	<tr>
 			          		<td class="text-center">2</td>
 			          		<td class="text-center">14</td>
+			          		<td class="text-center">LG - v01</td>
 			          	</tr>
 			          </table>
 	          		</td>

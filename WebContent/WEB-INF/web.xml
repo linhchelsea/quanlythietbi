@@ -139,6 +139,18 @@
   </servlet-mapping>
   
   
+  <!-- CHUC NANG NGUOI MUON -->
+  <servlet>
+    <servlet-name>DanhSachThietBiController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.DanhSachThietBiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanhSachThietBiController</servlet-name>
+    <url-pattern>/cnnm-danhsachthietbi</url-pattern>
+  </servlet-mapping>
+  
+
+  
   <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
