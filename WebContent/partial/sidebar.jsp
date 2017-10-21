@@ -32,6 +32,12 @@
             <span class="nav-link-text">Quản lý sử dụng</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
+          <a class="nav-link" href="<%= request.getContextPath() %>/baoduong">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Quản lý bảo dưỡng</span>
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
