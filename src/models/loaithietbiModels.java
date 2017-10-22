@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import beans.LoaiThietBi;
@@ -81,5 +82,31 @@ public class loaithietbiModels {
 			}
 		}
 		return loaiTB;
+	}
+	
+	//LAY SO LUONG THEO MA LOAI
+	public int getSoLuong(int maLoai) {
+		int soLuong = 0;
+		conn = lcdb.GetConnectMySQL();
+		String query = "SELECT SoLuong FROM LoaiTB WHERE MaLoai = ? LIMIT 1";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, maLoai);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				soLuong = rs.getInt("SoLuong");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return soLuong;
 	}
 }

@@ -37,7 +37,7 @@
 		                  	<%break; } %>
 		                  <%} %>
 		                  <td class="text-center">
-		          			<a href="<%= request.getContextPath() %>/cnnm-dangkysudung?maLoaiTB=<%=item.getMaLoai()%>" class="btn btn-success">Đăng ký</a>
+		          			<a href="<%= request.getContextPath() %>/cnnm-dangkysudung?type=load&maLoaiTB=<%=item.getMaLoai()%>" class="btn btn-success">Đăng ký</a>
 		                  </td>
 		                </tr>
 	                <%} else {

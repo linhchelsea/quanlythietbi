@@ -137,9 +137,6 @@
     <servlet-name>sdtbDangKyController</servlet-name>
     <url-pattern>/sdtb-dangky</url-pattern>
   </servlet-mapping>
-  
-  
-<!-- CHUC NANG NGUOI MUON -->
   <servlet>
     <servlet-name>DanhSachThietBiController</servlet-name>
     <servlet-class>chucNangNguoiMuonController.DanhSachThietBiController</servlet-class>
@@ -156,10 +153,14 @@
     <servlet-name>DangKySuDungController</servlet-name>
     <url-pattern>/cnnm-dangkysudung</url-pattern>
   </servlet-mapping>
-  
-  
-
-  
+  <servlet>
+    <servlet-name>SoLuongKhaDungController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.SoLuongKhaDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SoLuongKhaDungController</servlet-name>
+    <url-pattern>/cnnm-soluongkhadung</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>

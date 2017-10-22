@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import beans.ThietBi;
+import beans.ThongTinDangKy;
 import library.LibraryConnectDB;
 
 public class thietbiModels {
@@ -48,4 +50,31 @@ public class thietbiModels {
 		}
 		return alTB;
 	}
+	
+	//TINH SO THIET BI KHA DUNG
+			public int getSoLuongKhaDung(int maLoai, Timestamp batDau, Timestamp ketThuc) {
+				int soLuongKhaDung = 0;
+				conn = lcdb.GetConnectMySQL();
+				String query = "SELECT * FROM ThongTinDangKy WHERE MaLoaiTB = ?";
+				try {
+					pst = conn.prepareStatement(query);
+					pst.setInt(1, maLoai);
+					rs = pst.executeQuery();
+					while(rs.next()){
+						
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						rs.close();
+						pst.close();
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				return soLuongKhaDung;
+			}
 }
