@@ -162,6 +162,30 @@
     <url-pattern>/cnnm-soluongkhadung</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>YeuCauDaGuiController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.YeuCauDaGuiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>YeuCauDaGuiController</servlet-name>
+    <url-pattern>/cnnm-yeucaudagui</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HuyDangKyController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.HuyDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HuyDangKyController</servlet-name>
+    <url-pattern>/cnnm-huydangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiDangSuDungController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.ThietBiDangSuDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiDangSuDungController</servlet-name>
+    <url-pattern>/cnnm-thietbidangsudung</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
   </servlet>
