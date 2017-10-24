@@ -81,11 +81,11 @@
 	        <table>
 	          	<tr>
 	          		<td style="font-weight: bold;">Mã đăng ký:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td id="modal-maDK">1</td>
+	          		<td id="modal-maDK"></td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Tình trạng</td>
-	          		<td style="color: red;" id="modal-tinhTrang">Chưa duyệt</td>
+	          		<td style="color: red;" id="modal-tinhTrang"></td>
 	          	</tr>
 	          </table>
 	          <hr>
@@ -93,35 +93,35 @@
 	          	<th colspan="2" style="color: green;">Chi tiết thiết bị</th>
 	          	<tr>
 	          		<td style="font-weight: bold;">Tên thiết bị:</td>
-	          		<td id="modal-tenTB">Màn hình LG</td>
+	          		<td id="modal-tenTB"></td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Loại thiết bị:</td>
-	          		<td id="modal-loaiTB">Màn hình</td>
+	          		<td id="modal-loaiTB"></td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Số lượng mượn:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td id="modal-soLuong">10</td>
+	          		<td id="modal-soLuong"></td>
 	          	</tr>
 	          </table>
 	          <hr>
 	          <p style="color: green; font-weight: bold;">Thời gian đăng ký</p>
-	          	<span id="modal-thoiGianDK">15/10/2017 8:00 AM</span>
+	          	<span id="modal-thoiGianDK"></span>
 	          <hr>
 	          <table>
 	          	<th colspan="2" style="color: green;">Thời gian sử dụng</th>
 	          	<tr>
 	          		<td style="font-weight: bold;">Bắt đầu:</td>
-	          		<td id="modal-batDau">15/10/2017 8:00 AM</td>
+	          		<td id="modal-batDau"></td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Kết thúc:</td>
-	          		<td id="modal-ketThuc">15/10/2017 8:00 AM</td>
+	          		<td id="modal-ketThuc"></td>
 	          	</tr>
 	          </table>
 	          <hr>
 	          <p style="color: green; font-weight: bold;">Mục đích sử dụng</p>
-	          <p id="modal-mucDich">Mình thích thì mình đăng ký thôi. Mình thích thì mình đăng ký thôi. Mình thích thì mình đăng ký thôi. Mình thích thì mình đăng ký thôi. </p>
+	          <p id="modal-mucDich"></p>
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>

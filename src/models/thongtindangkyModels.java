@@ -84,7 +84,7 @@ public class thongtindangkyModels {
 		return result;
 	}
 
-	// LAY DANH SACH TTDK THEO MA LOAI TB
+	// LAY DANH SACH TTDK THEO MA NGUOI MUON
 	public ArrayList<ThongTinDangKy> getListByMaND(int maND) {
 		ArrayList<ThongTinDangKy> alTTDK = new ArrayList<>();
 		ThongTinDangKy.Builder builder = new ThongTinDangKy.Builder();
@@ -98,7 +98,8 @@ public class thongtindangkyModels {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				ThongTinDangKy objItem = builder.setMaTTDK(rs.getInt("MaTTDK")).setMaLoaiTB(rs.getInt("MaLoaiTB"))
-						.setMaNguoiMuon(rs.getInt("MaNguoiMuon")).setThoiGianDangKy(rs.getTimestamp("ThoiGianDangKy"))
+						.setMaNguoiMuon(rs.getInt("MaNguoiMuon"))
+						.setThoiGianDangKy(rs.getTimestamp("ThoiGianDangKy"))
 						.setDKBatDauSuDung(rs.getTimestamp("DKBatDauSuDung"))
 						.setDKKetThucSuDung(rs.getTimestamp("DKKetThucSuDung")).setSoLuongDK(rs.getInt("SoLuongDK"))
 						.setMucDichSuDung(rs.getString("MucDichSuDung")).setTinhTrang(rs.getInt("TinhTrang"))

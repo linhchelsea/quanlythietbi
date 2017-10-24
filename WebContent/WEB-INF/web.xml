@@ -186,6 +186,14 @@
     <url-pattern>/cnnm-thietbidangsudung</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ChiTietSuDungController</servlet-name>
+    <servlet-class>chucNangNguoiMuonController.ChiTietSuDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChiTietSuDungController</servlet-name>
+    <url-pattern>/cnnm-chitietsudung</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
   </servlet>
