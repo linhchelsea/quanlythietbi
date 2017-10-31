@@ -87,9 +87,9 @@ public class ThietBi {
 		return "ThietBi [maTB=" + maTB + ", tenTB=" + tenTB + ", maLoaiTB=" + maLoaiTB + ", ngayNhap=" + ngayNhap + "]";
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		ThietBi.Builder builder = new ThietBi.Builder();
 		ThietBi thietbi = builder.setMaTB(1).setTenTB("LG").build();
-		System.out.println(thietbi.toString());
-	}
+		
+	}*/
 }
