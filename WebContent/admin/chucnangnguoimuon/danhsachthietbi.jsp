@@ -14,6 +14,9 @@
           <a href="#">Danh sách thiết bị</a>
         </li>
       </ol>
+      <%if (request.getParameter("msgdangky") != null && request.getParameter("msgdangky").equals("1")) {%>
+				<div class="alert alert-success">Đăng ký thành công</div>
+			<%}%>
       <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
