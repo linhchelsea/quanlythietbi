@@ -1,3 +1,8 @@
+<%@page import="java.util.Date"%>
+<%@page import="library.LibraryFormatDateTime"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="beans.ThongTinSuDung"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/partial/header.jsp" %>
@@ -6,6 +11,8 @@
     <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
+      <%ArrayList<ThongTinSuDung> alTTSD = (ArrayList<ThongTinSuDung>) request.getAttribute("alTTSD"); 
+      LibraryFormatDateTime lbDateTime = new LibraryFormatDateTime();%>
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">
           <a href="#">Cập nhật sử dụng</a>
@@ -26,19 +33,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-center">1</td>
-                  <td>Phan Thanh Thuận</td>
-                  <td>Màn hình LG</td>
-                  <td>Màn hình</td>
-                  <td>15/11/2017 08:00 AM</td>
-                  <td>15/11/2017 14:00 AM</td>
-                  <td>Chưa giao</td>
+              <%
+              long now = new Date().getTime();
+              for (ThongTinSuDung objTTSD : alTTSD){ %>
+                <tr <%if (objTTSD.getKetThucSuDung().getTime() <= now) {%>
+						style="color: red;" <%}%>>
+                  <td class="text-center"><%=objTTSD.getMaTTSD() %></td>
+                  <td><%=objTTSD.getObjNguoiMuon().getTenND() %></td>
+                  <td><%=objTTSD.getObjTTDK().getObjLoaiTB().getTenLoai() %></td>
+                  <td><%=objTTSD.getObjTTDK().getObjLoaiTB().getObjLoaiCha().getTenLoai() %></td>
+                  <td><%=lbDateTime.TimestamptoString(objTTSD.getBatDauSuDung()) %></td>
+                  <td><%=lbDateTime.TimestamptoString(objTTSD.getKetThucSuDung()) %></td>
+                  <td>
+                  <%if(objTTSD.getTinhTrang() == 1){ %>
+                  	Chưa giao
+                  <%} else { %>
+                  	Đang sử dụng
+                  <%} %>
+                  </td>
                   <td class="text-center">
-                  	<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModelChiTiet">Chi tiết</button>
+                  	<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModelChiTiet"
+                  	onclick="ChiTiet(<%=objTTSD.getMaNguoiMuon()%>, '<%=objTTSD.getObjNguoiMuon().getTenND()%>', '<%=objTTSD.getObjNguoiMuon().getObjPhongBan().getTenPhongBan()%>', '<%=objTTSD.getObjNguoiMuon().getObjChucVu().getTenChucVu()%>', '<%=objTTSD.getObjTTDK().getObjLoaiTB().getTenLoai()%>', '<%=objTTSD.getObjTTDK().getObjLoaiTB().getObjLoaiCha().getTenLoai()%>', <%=objTTSD.getObjTTDK().getSoLuongDK()%>, '<%if (objTTSD.getTinhTrang() == 1){ %>Chưa giao<%} else {%>Đang sử dụng<%} %>', '<%=lbDateTime.TimestamptoString(objTTSD.getBatDauSuDung())%>', '<%=lbDateTime.TimestamptoString(objTTSD.getKetThucSuDung())%>', <%=objTTSD.getMaTTSD() %>);"
+                  	>Chi tiết</button>
           			<a href="<%= request.getContextPath() %>/user-edit" class="btn btn-success" data-toggle="modal" data-target="#ModelBanGiao">Bàn giao</a>
                   </td>
                 </tr>
+                <%} %>
                 <tr>
                   <td class="text-center">2</td>
                   <td>Nguyễn Mạnh Linh</td>
@@ -61,7 +81,8 @@
                   <td>18/10/2017 14:00 AM</td>
                   <td>Đang sử dụng</td>
                   <td class="text-center">
-                  	<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModelChiTiet">Chi tiết</button>
+                  	<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModelChiTiet"
+                  	>Chi tiết</button>
                   	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModelKetThuc">Kết thúc</button>
                   </td>
                 </tr>
@@ -84,36 +105,36 @@
 	          <table>
 	          	<th colspan="2" style="color: green;">Thông tin người mượn</th>
 	          	<tr>
-	          		<td style="font-weight: bold;">Mã người dùng:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>1</td>
+	          		<td style="font-weight: bold;" >Mã người dùng:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	          		<td id="modal-maND">1</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Họ tên:</td>
-	          		<td>Phan Thanh Thuận</td>
+	          		<td id="modal-tenND">Phan Thanh Thuận</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Phòng ban:</td>
-	          		<td>Kế toán</td>
+	          		<td id="modal-phongBan">Kế toán</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Chức vụ:</td>
-	          		<td>Trưởng phòng</td>
+	          		<td id="modal-chucVu">Trưởng phòng</td>
 	          	</tr>
 	          </table>
 	          <hr>
 	          <table>
 	          	<th colspan="2" style="color: green;">Chi tiết thiết bị</th>
 	          	<tr>
-	          		<td style="font-weight: bold;">Tên thiết bị:</td>
-	          		<td>Màn hình LG</td>
+	          		<td style="font-weight: bold;" id="modal-tenTB">Tên thiết bị:</td>
+	          		<td id="modal-tenTB">Màn hình LG</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Loại thiết bị:</td>
-	          		<td>Màn hình</td>
+	          		<td id="modal-loaiTB">Màn hình</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Số lượng mượn:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>10</td>
+	          		<td id="modal-soLuong">10</td>
 	          	</tr>
 	          </table>
 	          <hr>
@@ -121,15 +142,15 @@
 	          	<th colspan="2" style="color: green;">Sử dụng</th>
 	          	<tr>
 	          		<td style="font-weight: bold;">Tình trạng:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	          		<td>Chưa giao</td>
+	          		<td id="modal-tinhTrang">Chưa giao</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Bắt đầu:</td>
-	          		<td>15/10/2017 8:00 AM</td>
+	          		<td id="modal-batDau" >15/10/2017 8:00 AM</td>
 	          	</tr>
 	          	<tr>
 	          		<td style="font-weight: bold;">Kết thúc:</td>
-	          		<td>15/10/2017 8:00 AM</td>
+	          		<td id="modal-ketThuc">15/10/2017 8:00 AM</td>
 	          	</tr>
 	          </table>
 	          <hr>
@@ -137,7 +158,7 @@
 	          	<th colspan="2" style="color: green;">Danh sách thiết bị</th>
 	          	<tr>
 	          		<td>
-	          			<table border="1">
+	          			<table border="1" id="ajax_chitiet">
 			          	<tr>
 			          		<th class="text-center" style="padding: 0 15px;">#</th>
 			          		<th class="text-center" style="padding: 0 15px;">Mã thiết bị</th>
@@ -325,8 +346,38 @@
 	        </div>
 	      </div>
 	      
-	    </div>a
+	    </div>
 	  </div>
+	  <script type="text/javascript">
+	  function ChiTiet(maND, tenND, phongBan, chucVu, tenTB, loaiTB, soLuong, tinhTrang, batDau, ketThuc, maTTSD) {
+			document.getElementById("modal-maND").innerHTML = maND;
+			document.getElementById("modal-tenND").innerHTML = tenND;
+			document.getElementById("modal-phongBan").innerHTML = phongBan;
+			document.getElementById("modal-chucVu").innerHTML = chucVu;
+			document.getElementById("modal-tenTB").innerHTML = tenTB;
+			document.getElementById("modal-loaiTB").innerHTML = loaiTB;
+			document.getElementById("modal-soLuong").innerHTML = soLuong;
+			document.getElementById("modal-tinhTrang").innerHTML = tinhTrang;
+			document.getElementById("modal-batDau").innerHTML = batDau;
+			document.getElementById("modal-ketThuc").innerHTML = ketThuc;
+			
+			$.ajax({
+	      		url: '<%=request.getContextPath()%>/cnnm-chitietsudung',
+	           	type: 'POST',
+	         	cache: false,
+	            data: {
+	            	maTTSD: maTTSD
+	            },
+	            success: function(data){
+	            	$("#ajax_chitiet").html(data);
+	          	},
+	           	error: function (){
+	            	//Xử lý nếu có lỗi
+	                confirm('Có vấn đề xảy ra');
+	            }
+	     	});
+		}
+	  </script>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <%@include file="/partial/footer.jsp" %>

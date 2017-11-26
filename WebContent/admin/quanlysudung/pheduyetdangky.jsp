@@ -63,7 +63,7 @@
 								data-toggle="modal" data-target="#ModelChiTiet"
 								onclick="ChiTiet(<%=objTTDK.getMaNguoiMuon()%>, '<%=objTTDK.getObjNguoiDung().getTenND()%>', '<%=objTTDK.getObjNguoiDung().getObjPhongBan().getTenPhongBan()%>', '<%=objTTDK.getObjNguoiDung().getObjChucVu().getTenChucVu()%>', '<%=objTTDK.getObjLoaiTB().getTenLoai()%>', '<%=objTTDK.getObjLoaiTB().getObjLoaiCha().getTenLoai()%>', <%=objTTDK.getSoLuongDK()%>, '<%=lbDateTime.TimestamptoString(objTTDK.getThoiGianDangKy())%>', '<%=lbDateTime.TimestamptoString(objTTDK.getDKBatDauSuDung())%>', '<%=lbDateTime.TimestamptoString(objTTDK.getDKKetThucSuDung())%>', '<%=objTTDK.getMucDichSuDung()%>');">Chi
 								tiết</button>
-							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModelConfirm" <%-- onclick="PheDuyet(<%=objTTDK.getMaTTDK() %>, <%=objTTDK.getMaNguoiMuon() %>, '<%=objTTDK.getDKBatDauSuDung() %>', '<%=objTTDK.getDKKetThucSuDung() %>', <%=objTTDK.getSoLuongDK() %>, <%=objTTDK.getMaLoaiTB()%>)" --%>>Phê duyệt</button>
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModelConfirm" onclick="getTTDKTrung(<%=objTTDK.getMaLoaiTB()%>, <%=objTTDK.getDKBatDauSuDung().getTime()%>, <%=objTTDK.getDKKetThucSuDung().getTime()%>);">Phê duyệt</button>
 							<button type="button" class="btn btn-danger" data-toggle="modal"
 								data-target="#ModelTuChoi" onclick="TuChoi(<%=objTTDK.getMaTTDK()%>)">Từ chối</button>
 						</td>
@@ -231,8 +231,24 @@
 	</div>
 
 	<script>
-		function getTTDKTrung(){
-			
+		function getTTDKTrung(maLoai, batDau, ketThuc){
+			$.ajax({
+	      		url: '<%=request.getContextPath()%>/qlsd-danhsachtrung',
+	           	type: 'POST',
+	         	cache: false,
+	            data: {
+	            	maLoai: maLoai,
+	            	batDau: batDau,
+	            	ketThuc: ketThuc
+	            },
+	            success: function(data){
+	            	alert("sdfds");
+	          	},
+	           	error: function (){
+	            	//Xử lý nếu có lỗi
+	                confirm('Có vấn đề xảy ra');
+	            }
+	     	});
 		}
 	
 		function ChiTiet(maND, tenND, phongBan, chucVu, tenTB, loaiTB, soLuong, dangKy, batDau, ketThuc, mucDich) {
@@ -254,8 +270,8 @@
 		}
 		
 		  function PheDuyet(maTTDK, maNguoiMuon, dkBatDauSuDung, dkKetThucSuDung, soLuong, maLoaiTB){
-			  var confirm = confirm("Bạn muốn phê duyệt đăng ký này?");
-			  if(confirm == true){
+			  var conf = confirm("Bạn muốn phê duyệt đăng ký này?");
+			  if(conf == true){
 				  window.location.href = '<%=request.getContextPath()%>/qlsd-pheduyet?maTTDK=' + maTTDK + '&maNguoiMuon=' + maNguoiMuon + '&dkBatDauSuDung=' + dkBatDauSuDung + '&dkKetThucSuDung=' + dkKetThucSuDung + '&soLuong=' + soLuong + '&maLoaiTB=' + maLoaiTB;
 			  }
 			}

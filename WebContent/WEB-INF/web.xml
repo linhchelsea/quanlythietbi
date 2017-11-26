@@ -201,6 +201,16 @@
     <servlet-name>PheDuyetDangKyController</servlet-name>
     <url-pattern>/qlsd-pheduyetdangky</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DanhSachTrungController</servlet-name>
+    <servlet-class>quanLySuDungController.DanhSachTrungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanhSachTrungController</servlet-name>
+    <url-pattern>/qlsd-danhsachtrung</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>PheDuyetController</servlet-name>
     <servlet-class>quanLySuDungController.PheDuyetController</servlet-class>
@@ -225,6 +235,7 @@
     <servlet-name>CapNhatSuDungController</servlet-name>
     <url-pattern>/qlsd-capnhatsudung</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
