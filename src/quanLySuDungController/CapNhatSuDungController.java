@@ -1,4 +1,4 @@
-package sdtbController;
+package quanLySuDungController;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class sdtbIndexController
+ * Servlet implementation class C
  */
-
-public class sdtbDangKyController extends HttpServlet {
+@WebServlet("/C")
+public class CapNhatSuDungController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sdtbDangKyController() {
+    public CapNhatSuDungController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class sdtbDangKyController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sudungthietbi/sdtb-dangky.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlysudung/capnhatsudung.jsp");
 		rd.forward(request, response);
 	}
 

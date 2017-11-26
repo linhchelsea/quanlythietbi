@@ -113,4 +113,33 @@ public class thongtinsudungModels {
 			}
 			return alTTSD;
 		}
+		
+		// THEM SU DUNG MOI
+		public int ThemSuDungMoi(ThongTinSuDung objTTSD) {
+			int result = 0;
+			conn = lcdb.GetConnectMySQL();
+			String query = "INSERT INTO `ThongTinSuDung` (`MaTTDK`, `MaNguoiMuon`, `MaNguoiPheDuyet`, `BatDauSuDung`, `KetThucSuDung`, `TinhTrang`) VALUES (?, ?, ?, ?, ?, 1);";
+			try {
+				pst = conn.prepareStatement(query);
+				pst.setInt(1, objTTSD.getMaTTDK());
+				pst.setInt(2, objTTSD.getMaNguoiMuon());
+				pst.setInt(3, objTTSD.getMaNguoiPheDuyet());
+				pst.setTimestamp(4, objTTSD.getBatDauSuDung());
+				pst.setTimestamp(5, objTTSD.getKetThucSuDung());
+				pst.executeUpdate();
+				result = 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return result;
+		}
 }

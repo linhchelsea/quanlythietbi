@@ -1,25 +1,27 @@
-package sdtbController;
+package quanLySuDungController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class sdtbIndexController
- */
+import beans.ThongTinDangKy;
+import models.thongtindangkyModels;
 
-public class sdtbIndexController extends HttpServlet {
+/**
+ * Servlet implementation class PheDuyetDangKyController
+ */
+public class PheDuyetDangKyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sdtbIndexController() {
+    public PheDuyetDangKyController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,8 +37,11 @@ public class sdtbIndexController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sudungthietbi/sdtb-danhsach.jsp");
+		thongtindangkyModels mTTDK = new thongtindangkyModels();
+		ArrayList<ThongTinDangKy> alTTDK = mTTDK.getList();
+		request.setAttribute("alTTDK", alTTDK);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlysudung/pheduyetdangky.jsp");
 		rd.forward(request, response);
 	}
-
 }

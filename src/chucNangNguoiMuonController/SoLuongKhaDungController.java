@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.ThietBiKhaDung;
 import models.baoduongModel;
 import models.loaithietbiModels;
 import models.thongtinsudungModels;
@@ -39,23 +40,13 @@ public class SoLuongKhaDungController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		ThietBiKhaDung khaDung = new ThietBiKhaDung();
 		int maLoai = Integer.parseInt(request.getParameter("maTB"));
 		Long batDau = Long.parseLong(request.getParameter("batDau"));
 		Long ketThuc = Long.parseLong(request.getParameter("ketThuc"));
 		int soLuongKhaDung = 0;
 		
-		//Tinh so luong kha dung
-		//Tong so luong
-		loaithietbiModels mLoaiTB = new loaithietbiModels();
-		int tongSoLuong = mLoaiTB.getSoLuong(maLoai);
-		//So thiet bi dang su dung
-		thongtinsudungModels mTTSD = new thongtinsudungModels();
-		int soLuongDangSuDung = mTTSD.getSoLuongDangSuDung(maLoai, new Timestamp(batDau), new Timestamp(ketThuc));
-		//so thiet bi dang bao duong
-		baoduongModel mBaoDuong = new baoduongModel();
-		int soLuongBaoDuong = mBaoDuong.getSoLuongDangBaoDuong(maLoai, new Timestamp(batDau), new Timestamp(ketThuc));
-		//So luong kha dung
-		soLuongKhaDung = tongSoLuong - (soLuongDangSuDung + soLuongBaoDuong);
+		soLuongKhaDung = khaDung.TinhSoLuongKhaDung(maLoai, new Timestamp(batDau), new Timestamp(ketThuc));
 		
 		//tra ve so luong kha dung
 		out.print(soLuongKhaDung);
