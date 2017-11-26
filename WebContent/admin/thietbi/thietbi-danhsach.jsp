@@ -1,7 +1,13 @@
+<%@page import="beans.LoaiThietBi"%>
+<%@page import="beans.ThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/partial/header.jsp"%>
 <!-- Body -->
+<%
+	ArrayList<ThietBi> alThietBi = (ArrayList<ThietBi>) request.getAttribute("alThietBi");
+%>
 
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -32,19 +38,21 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% for(ThietBi item: alThietBi) { %>
 					<tr>
-						<td>1</td>
-						<td>Máy chiếu</td>
-						<td>Canon Projecter</td>
-						<td class="text-center">5/5/2015</td>
+						<td><%=item.getMaTB() %></td>
+						<td><%=item.getTenTB() %></td>
+						<td><%=item.getMaLoaiTB() %></td>
+						<td class="text-center"><%=item.getNgayNhap() %></td>
 						<td class="text-center"><a
-							href="<%=request.getContextPath()%>/thietbi-sua"
+							href="<%=request.getContextPath()%>/thietbi-sua?type=load&id=<%=item.getMaTB() %>"
 							class="btn btn-warning">Sửa</a> <a
 							href="<%=request.getContextPath()%>/thietbi-xoa"
 							class="btn btn-danger">Xóa</a> <a
 							href="<%=request.getContextPath()%>/thietbi-chitiet"
 							class="btn btn-success">Chi tiết</a>
 					</tr>
+					<%} %>
 				</tbody>
 			</table>
 		</div>
@@ -61,4 +69,4 @@
 		<!-- Start footer -->
 		<%@include file="/partial/footer.jsp"%>
 	</footer>
-	</td>
+</div>
