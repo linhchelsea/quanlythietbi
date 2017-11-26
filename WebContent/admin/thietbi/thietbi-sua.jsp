@@ -15,6 +15,9 @@
 			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Sửa thông tin thiết bị</li>
 		</ol>
+		<%if (request.getParameter("editmsg") != null && request.getParameter("editmsg").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Chỉnh sửa thất bại</div>
+			<%}%>
 		<form action="<%=request.getContextPath() %>/thietbi-sua?type=edit&id=<%=thietBi.getMaTB() %>" method="POST">
 			<div class="form-group">
 			
@@ -49,7 +52,7 @@
 			<div class="form-group">
 				<div class="form-row">
 					<div class="col-md-2">
-						<a href="" class="form-control btn btn-danger">HỦY</a>
+						<a href="<%=request.getContextPath() %>/thietbi" class="form-control btn btn-danger">HỦY</a>
 					</div>
 					<div class="col-md-2">
 						<input class="form-control btn btn-warning" type="reset"

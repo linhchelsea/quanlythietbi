@@ -16,6 +16,15 @@
 			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Danh sách</li>
 		</ol>
+		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("1")) {%>
+				<div class="alert alert-success">Xóa thành công</div>
+			<%}%>
+		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Xóa thất bại</div>
+			<%}%>
+		<%if (request.getParameter("editmsg") != null && request.getParameter("editmsg").equals("1")) {%>
+				<div class="alert alert-success">Chỉnh sửa thành công</div>
+			<%}%>
 		<div class="col-md-12" style="margin-bottom: 10px">
 			<div class="col-md-6" style="margin-bottom: 10px">
 				<a href="<%=request.getContextPath()%>/thietbi-them"
@@ -47,9 +56,9 @@
 						<td class="text-center"><a
 							href="<%=request.getContextPath()%>/thietbi-sua?type=load&id=<%=item.getMaTB() %>"
 							class="btn btn-warning">Sửa</a> <a
-							href="<%=request.getContextPath()%>/thietbi-xoa"
+							href="<%=request.getContextPath()%>/thietbi?type=del&id=<%=item.getMaTB() %>"
 							class="btn btn-danger">Xóa</a> <a
-							href="<%=request.getContextPath()%>/thietbi-chitiet"
+							href="<%=request.getContextPath()%>/thietbi-chitiet?id=<%=item.getMaTB() %>"
 							class="btn btn-success">Chi tiết</a>
 					</tr>
 					<%} %>

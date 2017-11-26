@@ -38,14 +38,21 @@ public class ThietBiIndexController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("editmsg")!=null) {
-			System.out.println("edit result");
-		}
-		
 		thietbiModels mThietbiModels = new thietbiModels();
-		request.setAttribute("alThietBi", mThietbiModels.getList());
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-danhsach.jsp");
-		rd.forward(request, response);
+		if ((request.getParameter("type")!=null)&&request.getParameter("type").equals("del")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			if (mThietbiModels.xoaThietBi(id)==1) {
+				response.sendRedirect(request.getContextPath()+"/thietbi?delmsg=1");
+			}
+			else {
+				response.sendRedirect(request.getContextPath()+"/thietbi?delmsg=0");
+			}
+		}
+		else {
+			request.setAttribute("alThietBi", mThietbiModels.getList());
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-danhsach.jsp");
+			rd.forward(request, response);
+		}
 	}
-
+	
 }

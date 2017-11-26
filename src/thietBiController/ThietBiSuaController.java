@@ -64,7 +64,7 @@ public class ThietBiSuaController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/thietbi?editmsg=1");
 			}
 			else {
-				response.sendRedirect(request.getContextPath()+"/thietbi?editmsg=0");
+				response.sendRedirect(request.getContextPath()+"/thietbi-sua?type=load&editmsg=0");
 			}
 		}
 		else {
