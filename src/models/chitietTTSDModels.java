@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import beans.ChiTietTTSD;
+import beans.ThietBi;
 import beans.ThongTinBaoDuong;
 import library.LibraryConnectDB;
 
@@ -14,8 +16,47 @@ public class chitietTTSDModels {
 	private LibraryConnectDB lcdb;
 	private PreparedStatement pst;
 	private ResultSet rs;
-	
-	public chitietTTSDModels(){
+
+	public chitietTTSDModels() {
 		lcdb = new LibraryConnectDB();
+	}
+
+	// LAY DANH SACH THIET BI THEO MATTSD
+	public ArrayList<ChiTietTTSD> getListByMaTTSD(int maTTSD) {
+		ArrayList<ChiTietTTSD> alChiTietTTSD = new ArrayList<ChiTietTTSD>();
+		conn = lcdb.GetConnectMySQL();
+		String query = "SELECT * FROM `ChiTietTTSD`\n" + 
+				"INNER JOIN ThietBi ON ChiTietTTSD.MaTB = ThietBi.MaTB\n" + 
+				"WHERE MaTTSD = ?";
+		ChiTietTTSD.Builder builder = new ChiTietTTSD.Builder();
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, maTTSD);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				ChiTietTTSD objChiTiet = builder.setMaTTSD(maTTSD)
+						.setMaTB(rs.getInt("ChiTietTTSD.MaTB"))
+						.setMaLoaiTB(rs.getInt("ChiTietTTSD.MaLoaiTB"))
+						.build();
+				
+				ThietBi.Builder builderTB = new ThietBi.Builder();
+				ThietBi objThietBi = builderTB.setTenTB(rs.getString("ThietBi.TenTB")).build();
+				
+				objChiTiet.setObjThietBi(objThietBi);
+				
+				alChiTietTTSD.add(objChiTiet);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return alChiTietTTSD;
 	}
 }
