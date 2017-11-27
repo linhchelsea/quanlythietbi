@@ -190,4 +190,73 @@ public class thietbiModels {
 		return objItem;
 	}
 
+	// TIM KIEM THIET BI
+		public ArrayList<ThietBi> search(int matb, String tentb, int maloaitb, Date ngaynhap) {
+			ArrayList<ThietBi> alTB = new ArrayList<ThietBi>();
+			conn = lcdb.GetConnectMySQL();
+			String query = "SELECT * FROM ThietBi WHERE ";
+			boolean before = false;
+			if (matb!=-1) {
+				before = true;
+				query+= "matb=?";
+			}
+			if (tentb!=null) {
+				if (before) query+=" and ";
+				query+= "tentb LIKE ?";
+				before = true;
+			}
+			if (maloaitb!=-1) {
+				if (before) query+=" and ";
+				query+= "maloaitb=?";
+				before = true;
+			}
+			
+			if (ngaynhap!=null) {
+				if (before) query+=" and ";
+				query+= "ngaynhap=?";
+				before = true;
+			}
+			System.out.println(query);
+			
+			ThietBi.Builder builder = new ThietBi.Builder();
+			try {
+				int i = 1;
+				pst = conn.prepareStatement(query);
+				if (matb!=-1) {
+					pst.setInt(i++, matb);
+					System.out.println("da set mtb");
+				}
+				if (tentb!=null) {
+					pst.setString(i++,"%"+ tentb +"%");
+					System.out.println("da set tentb");
+				}
+				if (maloaitb!=-1) {
+					pst.setInt(i++, maloaitb);
+					System.out.println("da setmaloai");
+				}
+				if (ngaynhap!=null) {
+					System.out.println(i);
+					pst.setDate(i, ngaynhap);
+					System.out.println("da set ngay nhap");
+				}
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					ThietBi thietbi = builder.setMaTB(rs.getInt("MaTB")).setTenTB(rs.getString("TenTB"))
+							.setMaLoaiTB(rs.getInt("MaLoaiTB")).setNgayNhap(rs.getDate("NgayNhap")).build();
+					alTB.add(thietbi);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					rs.close();
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return alTB;
+		}
+
 }

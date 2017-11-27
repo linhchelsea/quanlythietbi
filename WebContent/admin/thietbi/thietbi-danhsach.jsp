@@ -16,6 +16,9 @@
 			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Danh sách</li>
 		</ol>
+		<%if (request.getParameter("addmsg") != null && request.getParameter("addmsg").equals("1")) {%>
+				<div class="alert alert-success">Thêm thành công</div>
+			<%}%>
 		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("1")) {%>
 				<div class="alert alert-success">Xóa thành công</div>
 			<%}%>
@@ -27,9 +30,9 @@
 			<%}%>
 		<div class="col-md-12" style="margin-bottom: 10px">
 			<div class="col-md-6" style="margin-bottom: 10px">
-				<a href="<%=request.getContextPath()%>/thietbi-them"
+				<a href="<%=request.getContextPath()%>/thietbi-them?type=load"
 					class="btn btn-success">THÊM THIẾT BỊ</a> <a
-					href="<%=request.getContextPath()%>/thietbi-timkiem"
+					href="<%=request.getContextPath()%>/thietbi-timkiem?type=load"
 					class="btn btn-primary"><i class="fa fa-search"
 					aria-hidden="true"></i>TÌM KIẾM</a>
 			</div>
@@ -51,7 +54,7 @@
 					<tr>
 						<td><%=item.getMaTB() %></td>
 						<td><%=item.getTenTB() %></td>
-						<td><%=item.getMaLoaiTB() %></td>
+						<td><%=item.getObjLoaiTB().getTenLoai() %></td>
 						<td class="text-center"><%=item.getNgayNhap() %></td>
 						<td class="text-center"><a
 							href="<%=request.getContextPath()%>/thietbi-sua?type=load&id=<%=item.getMaTB() %>"
