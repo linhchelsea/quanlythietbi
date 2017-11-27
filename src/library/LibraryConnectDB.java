@@ -8,7 +8,7 @@ public class LibraryConnectDB {
 	private Connection conn;
 	private String user = "root";
 	private String password= "";
-	private String url = "jdbc:mysql://localhost:3306/quanlythietbi?useUnicode=true&characterEncoding=UTF-8";
+	private String url = "jdbc:mysql://localhost:3306/cnpm?useUnicode=true&characterEncoding=UTF-8";
 	
 	public Connection GetConnectMySQL() {
 		try {

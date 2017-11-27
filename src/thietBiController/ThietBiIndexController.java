@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.thietbiModels;
+
 /**
  * Servlet implementation class IndexController
  */
@@ -36,8 +38,21 @@ public class ThietBiIndexController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-danhsach.jsp");
-		rd.forward(request, response);
+		thietbiModels mThietbiModels = new thietbiModels();
+		if ((request.getParameter("type")!=null)&&request.getParameter("type").equals("del")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			if (mThietbiModels.xoaThietBi(id)==1) {
+				response.sendRedirect(request.getContextPath()+"/thietbi?delmsg=1");
+			}
+			else {
+				response.sendRedirect(request.getContextPath()+"/thietbi?delmsg=0");
+			}
+		}
+		else {
+			request.setAttribute("alThietBi", mThietbiModels.getList());
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-danhsach.jsp");
+			rd.forward(request, response);
+		}
 	}
-
+	
 }
