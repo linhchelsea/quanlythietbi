@@ -45,5 +45,4 @@ public class CapNhatSuDungController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlysudung/capnhatsudung.jsp");
 		rd.forward(request, response);
 	}
-
 }
