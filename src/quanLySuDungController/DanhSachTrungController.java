@@ -1,8 +1,6 @@
-package sdtbController;
+package quanLySuDungController;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class sdtbIndexController
+ * Servlet implementation class DanhSachTrungController
  */
-
-public class sdtbIndexController extends HttpServlet {
+@WebServlet("/DanhSachTrungController")
+public class DanhSachTrungController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sdtbIndexController() {
+    public DanhSachTrungController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,8 +33,10 @@ public class sdtbIndexController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sudungthietbi/sdtb-danhsach.jsp");
-		rd.forward(request, response);
+		int maLoai = Integer.parseInt(request.getParameter("maLoai"));
+		Long batDau = Long.parseLong(request.getParameter("batDau"));
+		Long ketThuc = Long.parseLong(request.getParameter("ketThuc"));
+		int soLuongKhaDung = 0;
 	}
 
 }
