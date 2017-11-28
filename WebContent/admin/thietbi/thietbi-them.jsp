@@ -1,3 +1,5 @@
+<%@page import="beans.LoaiThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/partial/header.jsp"%>
@@ -7,42 +9,42 @@
 	<div class="container-fluid">
 		<!-- Breadcrumbs-->
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
+			<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/thietbi">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Thêm thông tin thiết bị</li>
 		</ol>
-		<form action="" method="">
+		<%if (request.getParameter("addmsg") != null && request.getParameter("addmsg").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Thêm thất bại</div> <%} %>
+		<form action="<%=request.getContextPath() %>/thietbi-them?type=add" method="POST">
 			<div class="form-group">
 				<div class="form-row">
 					<div class="col-md-6">
-						<label for="ma">Mã <span style="color: red">(*)</span></label> <input
-							class="form-control" disabled="disabled" type="text" name="ma">
+						<label for="ma">Mã <span style="color: red">(Không cần nhập)</span></label> <input
+							class="form-control" disabled="disabled" type="text" name="matb">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-md-6">
 						<label for="ngayNhapThietBi">Ngày nhập thiết bị <span
 							style="color: red">(*)</span></label> <input class="form-control"
-							type="date" name="ngayNhapThietBi">
+							type="date" name="ngaynhap">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-md-6">
 						<label for="tenThietBi">Tên thiết bị<span
 							style="color: red">(*)</span></label> <input class="form-control"
-							type="text" name="tenThietBi">
+							type="text" name="tentb">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-md-6">
 						<label for="loaiThietBi">Loại thiết bị <span
 							style="color: red">(*)</span></label> <select class="form-control"
-							name="loaiThietBi">
-							<option value="1">Màn hình ------</option>
-							<option value="1">Màn hình LG</option>
-							<option value="2">Màn hình Dell</option>
-							<option value="2">Máy chiếu ------</option>
-							<option value="1">Máy chiếu Ozawa</option>
-							<option value="2">Máy chiếu Fuji</option>
+							name="loaitb">
+							<% ArrayList<LoaiThietBi> listLoaiTB = (ArrayList<LoaiThietBi>) request.getAttribute("listLoaiTB"); 
+							for (LoaiThietBi loai: listLoaiTB) {  {%>
+							<option <%if (loai.getMaLoaiCha()==0) { %> disabled <%} %>value="<%=loai.getMaLoai()%>"><%=loai.getMaLoaiCha()==0? ">>>":""%><%=loai.getTenLoai() %></option>
+							<%} }%>
 						</select>
 					</div>
 				</div>
@@ -50,7 +52,7 @@
 			<div class="form-group">
 				<div class="form-row">
 					<div class="col-md-2">
-						<a href="" class="form-control btn btn-danger">HỦY</a>
+						<a href="<%=request.getContextPath() %>/thietbi" class="form-control btn btn-danger">HỦY</a>
 					</div>
 					<div class="col-md-2">
 						<input class="form-control btn btn-warning" type="reset"

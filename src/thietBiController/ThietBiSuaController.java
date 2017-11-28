@@ -2,6 +2,7 @@ package thietBiController;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.LoaiThietBi;
 import beans.ThietBi;
+import models.loaithietbiModels;
 import models.thietbiModels;
 
 /**
@@ -46,7 +49,20 @@ public class ThietBiSuaController extends HttpServlet {
 			System.out.println("loaded");
 			int id = Integer.parseInt(request.getParameter("id"));
 			ThietBi thietBi = thModels.getById(id);
+			ArrayList<LoaiThietBi> listLoaiTB = new loaithietbiModels().getList();
+			
+			ArrayList<LoaiThietBi> sortedListLoaiTB = new ArrayList<>();
+			for (LoaiThietBi loaicha : listLoaiTB) {
+				if (loaicha.getMaLoaiCha() == 0) {
+					sortedListLoaiTB.add(loaicha);
+					for (LoaiThietBi loaicon : listLoaiTB) {
+						if (loaicon.getMaLoaiCha() == loaicha.getMaLoai())
+							sortedListLoaiTB.add(loaicon);
+					}
+				}
+			}
 			request.setAttribute("tb", thietBi);
+			request.setAttribute("listLoaiTB", sortedListLoaiTB);
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-sua.jsp");
 			rd.forward(request, response);
 		}	

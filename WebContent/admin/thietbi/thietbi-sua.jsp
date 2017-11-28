@@ -1,3 +1,5 @@
+<%@page import="beans.LoaiThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="beans.ThietBi"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -38,7 +40,14 @@
 					<div class="col-md-6">
 						<label for="loaiThietBi">Loại thiết bị <span
 							style="color: red">(*)</span></label> 
-						<input name="maloaitb" class="form-control" value="<%=thietBi.getMaLoaiTB()%>">
+							<select class="form-control"
+							name="maloaitb">
+							<% ArrayList<LoaiThietBi> listLoaiTB = (ArrayList<LoaiThietBi>) request.getAttribute("listLoaiTB"); 
+							for (LoaiThietBi loai: listLoaiTB) {  {%>
+							<option <% if (loai.getMaLoai()==thietBi.getMaLoaiTB())%> selected="selected" <% %> <%if (loai.getMaLoaiCha()==0) { %> disabled <%} %>
+								value="<%=loai.getMaLoai()%>"><%=loai.getMaLoaiCha()==0? ">>>":""%><%=loai.getTenLoai() %></option>
+							<%} }%>
+						</select>
 					</div>
 				</div>
 				<div class="form-row">
