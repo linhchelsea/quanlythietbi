@@ -1,3 +1,5 @@
+<%@page import="beans.ThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/partial/header.jsp"%>
@@ -7,12 +9,12 @@
 	<div class="container-fluid">
 		<!-- Breadcrumbs-->
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
+			<li class="breadcrumb-item"><a href="<%=request.getContextPath()%>/thietbi">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Kết quả tìm kiếm</li>
 		</ol>
 		<div class="col-md-12" style="margin-bottom: 10px">
 			<div class="col-md-6" style="margin-bottom: 10px">
-				<a href="<%=request.getContextPath()%>/thietbi-timkiem"
+				<a href="<%=request.getContextPath()%>/thietbi-timkiem?type=load"
 					class="btn btn-warning">TÌM KIẾM</a>
 			</div>
 		</div>
@@ -28,12 +30,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+					ArrayList<ThietBi> listThietBi = (ArrayList<ThietBi>) request.getAttribute("listTB");
+					for (ThietBi tb: listThietBi) {
+					%>
 					<tr>
-						<td>1</td>
-						<td>Máy chiếu LG</td>
-						<td>Máy chiếu</td>
-						<td>30/02/2017</td>
+						<td><%=tb.getMaTB() %></td>
+						<td><%=tb.getTenTB() %></td>
+						<td><%=tb.getObjLoaiTB().getTenLoai() %></td>
+						<td><%=tb.getNgayNhap() %></td>
 					</tr>
+					<%} %>
 				</tbody>
 			</table>
 		</div>
