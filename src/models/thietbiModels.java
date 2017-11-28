@@ -259,4 +259,56 @@ public class thietbiModels {
 			return alTB;
 		}
 
+			public ArrayList<ThietBi> getListDangKy() {
+				ArrayList<ThietBi> alTB = new ArrayList<ThietBi>();
+				conn = lcdb.GetConnectMySQL();
+				String query = "SELECT * FROM ThietBi tb WHERE tb.MaTB NOT IN (SELECT MaTB FROM ThongTinBaoDuong WHERE TinhTrang <> 3)";
+				ThietBi.Builder builder = new ThietBi.Builder();
+				try {
+					st = conn.createStatement();
+					rs = st.executeQuery(query);
+					while(rs.next()){
+						
+						ThietBi thietbi = builder.setMaTB(rs.getInt("MaTB")).setTenTB(rs.getString("TenTB")).setMaLoaiTB(rs.getInt("MaLoaiTB")).setNgayNhap(rs.getDate("NgayNhap")).build();
+						alTB.add(thietbi);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						rs.close();
+						st.close();
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				return alTB;
+			}
+
+			public ThietBi getThietBi(int maTB) {
+				conn = lcdb.GetConnectMySQL();
+				String query = "SELECT * FROM ThietBi WHERE MaTB = ?";
+				ThietBi thietBi = null;
+				ThietBi.Builder builder = new ThietBi.Builder();
+				try {
+					pst = conn.prepareStatement(query);
+					pst.setInt(1, maTB);
+					rs = pst.executeQuery();
+					if(rs.next()){
+						thietBi = builder.setMaTB(rs.getInt("MaTB")).setTenTB(rs.getString("TenTB")).setMaLoaiTB(rs.getInt("MaLoaiTB")).setNgayNhap(rs.getDate("NgayNhap")).build();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						rs.close();
+						pst.close();
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				return thietBi;
+			}
 }

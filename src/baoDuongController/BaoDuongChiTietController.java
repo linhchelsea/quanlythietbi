@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.ThietBi;
-import models.thietbiModels;
+import beans.ThongTinBaoDuong;
+import models.baoduongModel;
 
 /**
- * Servlet implementation class BaoDuongIndexController
+ * Servlet implementation class BaoDuongChiTietController
  */
-
-public class BaoDuongThemThietBiController extends HttpServlet {
+public class BaoDuongChiTietController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BaoDuongThemThietBiController() {
+    public BaoDuongChiTietController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,14 +38,11 @@ public class BaoDuongThemThietBiController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//lay danh sach thiet bi dang bao duong
-		//chua co trong bang dang ky
-		//da tung bao duong <=> tinh trang = 3
-		thietbiModels tbModel = new thietbiModels();
-		ArrayList<ThietBi> alThietBi = tbModel.getListDangKy();
-				
-		request.setAttribute("alThietBi", alThietBi);
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlybaoduong/baoduong-themthietbi.jsp");
+		int MaTTBD = Integer.parseInt(request.getParameter("ttbd"));
+		baoduongModel bdModel = new baoduongModel();
+		ThongTinBaoDuong baoDuong = bdModel.getTTBD(MaTTBD);
+		request.setAttribute("baoDuong", baoDuong);
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlybaoduong/baoduong-chitiet.jsp");
 		rd.forward(request, response);
 	}
 

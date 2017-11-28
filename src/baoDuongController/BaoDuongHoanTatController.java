@@ -11,19 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.ThietBi;
+import beans.ThongTinBaoDuong;
+import models.baoduongModel;
 import models.thietbiModels;
 
 /**
  * Servlet implementation class BaoDuongIndexController
  */
 
-public class BaoDuongThemThietBiController extends HttpServlet {
+public class BaoDuongHoanTatController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BaoDuongThemThietBiController() {
+    public BaoDuongHoanTatController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,15 +41,22 @@ public class BaoDuongThemThietBiController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//lay danh sach thiet bi dang bao duong
-		//chua co trong bang dang ky
-		//da tung bao duong <=> tinh trang = 3
-		thietbiModels tbModel = new thietbiModels();
-		ArrayList<ThietBi> alThietBi = tbModel.getListDangKy();
-				
-		request.setAttribute("alThietBi", alThietBi);
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlybaoduong/baoduong-themthietbi.jsp");
-		rd.forward(request, response);
+		baoduongModel bdModel = new baoduongModel();
+		int ttbd = Integer.parseInt(request.getParameter("ttbd"));
+		ThongTinBaoDuong baoDuong = bdModel.getTTBD(ttbd);
+		if(baoDuong == null) {
+			System.out.println("ahihi");
+			response.sendRedirect(request.getContextPath()+"/baoduong/not-found");
+			return;
+		}
+		if(baoDuong.getTinhTrang() == 1) {
+			System.out.println("aaaaaaaaaaaa");
+			response.sendRedirect(request.getContextPath()+"/baoduong-capnhat?ttbd="+ttbd+"&err=3");
+			return;
+		}
+		boolean hoantat = bdModel.hoanTatBaoDuong(ttbd);
+		response.sendRedirect(request.getContextPath()+"/baoduong-capnhat?ttbd="+ttbd+"&hoantat=1");
+		return;
 	}
 
 }

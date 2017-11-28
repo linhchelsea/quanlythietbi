@@ -1,3 +1,5 @@
+<%@page import="beans.ThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/partial/header.jsp" %>
@@ -8,39 +10,42 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Quản lý bảo dưỡng</a>
+          <a href="<%=request.getContextPath() %>/baoduong">Quản lý bảo dưỡng</a>
         </li>
         <li class="breadcrumb-item active">Thêm thiết bị bảo dưỡng</li>
       </ol>
-      <div class="col-md-12" style="margin-bottom: 10px">
-      	<div class="col-md-6" style="margin-bottom: 10px">
-      		<a href="<%=request.getContextPath() %>/baoduong-capnhat" class="btn btn-warning">Cập nhật tình trạng bảo dưỡng</a>
-      	</div>
-      </div>
-  
+  		<%
+  		if( request.getParameter("dangky") != null &&request.getParameter("dangky").equals("0")){
+            %>
+                <div class="alert alert-danger"><p><strong>Thiết bị này hiện tại đang được bảo dưỡng</strong></p></div>
+            <%
+        }
+  		ArrayList<ThietBi> alThietBi = (ArrayList<ThietBi>) request.getAttribute("alThietBi");
+  		%>
       <div class="table-responsive">
             <table class="table table-striped" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Tên thiết bị</th>
                   <th>Mã</th>
-                  <th>Người/ Phòng sử dụng</th>
+                  <th>Tên thiết bị</th>
                   <th>Tình trạng</th>
-                  <th>Thông tin</th>
+                  <th class="text-center">Thông tin</th>
                 </tr>
               </thead>
               <tbody>
+              <%
+              	for(ThietBi thietBi : alThietBi){
+              %>
                 <tr>
-                  <td>Máy chiếu</td>
-                  <td>M006</td>
-                  <td>Phòng F302</td>
+                  <td><%= thietBi.getMaTB() %></td>
+                  <td><%= thietBi.getTenTB() %></td>
                   <td>Đang sử dụng</td>
                   <td class="text-center">
-          			<a href="<%= request.getContextPath() %>/baoduong-chitiet" class="btn btn-success">Chi tiết</a>
-          			<a href="<%= request.getContextPath() %>/baoduong-dangky" class="btn btn-warning">Đăng ký bảo dưỡng</a>
-          
+          			<a href="<%= request.getContextPath() %>/baoduong-chitiet?maTB=<%= thietBi.getMaTB() %>" class="btn btn-success">Chi tiết</a>
+          			<a href="<%= request.getContextPath() %>/baoduong-dangky?maTB=<%= thietBi.getMaTB() %>" class="btn btn-warning">Đăng ký bảo dưỡng</a>
                   </td>
                 </tr>
+                <%} %>
               </tbody>
             </table>
           </div>

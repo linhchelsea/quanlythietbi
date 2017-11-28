@@ -1,6 +1,7 @@
 package baoDuongController;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -19,13 +20,13 @@ import models.thietbiModels;
  * Servlet implementation class BaoDuongIndexController
  */
 
-public class BaoDuongDangKyController extends HttpServlet {
+public class BaoDuongPostDangKyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BaoDuongDangKyController() {
+    public BaoDuongPostDangKyController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,22 +44,35 @@ public class BaoDuongDangKyController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int maTB = Integer.parseInt(request.getParameter("maTB"));
 		thietbiModels tbModel = new thietbiModels();
-		ThietBi thiebi = tbModel.getThietBi(maTB);
-		if(thiebi == null) {
-			response.sendRedirect(request.getContextPath()+"/baoduong/not-found");
-			return;
-		}
-		//Kiem tra thiet bi nay da bao duong xong chua
-		baoduongModel bdModel = new baoduongModel();
-		ThongTinBaoDuong ttbd = bdModel.getTTBDByMaThietBi(maTB);
-		if(ttbd != null && ttbd.getTinhTrang() != 3 ) {
-			response.sendRedirect(request.getContextPath()+"/baoduong-themthietbi?dangky=0");
-			return;
-		}
 		ThietBi thietBi = tbModel.getThietBi(maTB);
-		request.setAttribute("thietBi", thietBi);
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/quanlybaoduong/baoduong-dangky.jsp");
-		rd.forward(request, response);
+		Date ngayBatDau = Date.valueOf(request.getParameter("ngaybaoduong"));
+		Date ngayKetThuc = Date.valueOf(request.getParameter("dukienxong"));
+		if(ngayBatDau.after(ngayKetThuc)) {
+			response.sendRedirect(request.getContextPath() + "/baoduong-dangky?maTB="+maTB+"&err=bd-kt");
+			return;
+		}
+		if(ngayBatDau.before(new java.util.Date())) {
+			response.sendRedirect(request.getContextPath() + "/baoduong-dangky?maTB="+maTB+"&err=ht");
+			return;
+		}
+		String lyDoBaoDuong = new String(request.getParameter("lydobaoduong").getBytes("ISO-8859-1"),"UTF-8");
+		
+		baoduongModel bdModel = new baoduongModel();
+		ThongTinBaoDuong.Builder builder = new ThongTinBaoDuong.Builder();
+		ThongTinBaoDuong ttbd = builder.setMaTB(thietBi.getMaTB())
+										.setMaNV(2)//chua co session
+										.setMaLoaiTB(thietBi.getMaLoaiTB())
+										.setTinhTrang(1)//mac dinh
+										.setLyDoBaoDuong(lyDoBaoDuong)
+										.setNgayBatDau(ngayBatDau)
+										.setNgayKetThuc(ngayKetThuc)
+										.build();
+		boolean dangKy = bdModel.DangKyBaoDuong(ttbd);
+		if(dangKy) {
+			response.sendRedirect(request.getContextPath() + "/baoduong?msg=success");
+			return;
+		}
+		response.sendRedirect(request.getContextPath() + "/baoduong?msg=fail");	
 	}
 
 }
