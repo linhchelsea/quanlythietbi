@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class LibraryConnectDB {
 	private Connection conn;
 	private String user = "root";
-	private String password= "";
+	private String password= "root";
 	private String url = "jdbc:mysql://localhost:3306/quanlythietbi?useUnicode=true&characterEncoding=UTF-8";
 	
 	public Connection GetConnectMySQL() {

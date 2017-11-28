@@ -38,7 +38,7 @@ public class BaoDuongIndexController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		baoduongModel mBD = new baoduongModel();
-		int sodong = 2;
+		int sodong = 20;
 		int tong = mBD.getTotal();
 		int sotrang = (int) Math.ceil((float)tong/sodong);
 		int tranghientai = 1;

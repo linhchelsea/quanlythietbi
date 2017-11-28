@@ -204,4 +204,14 @@ public class ThongTinBaoDuong {
 				+ ", ngayKetThuc=" + ngayKetThuc + ", objNguoiDung=" + objNguoiDung + ", objThietBi=" + objThietBi
 				+ ", objLoaiThietBi=" + objLoaiThietBi + "]";
 	}
+	
+	public static void main(String[] args) {
+		ThongTinBaoDuong.Builder builder = new ThongTinBaoDuong.Builder();
+		ThongTinBaoDuong TTBD = builder.setMaTTBD(1)
+				.setLyDoBaoDuong("aaaaaa")
+				.setMaTB(2)
+				.build();
+				
+		System.out.println(TTBD.toString());
+	}
 }

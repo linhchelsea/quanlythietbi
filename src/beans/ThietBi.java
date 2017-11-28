@@ -7,12 +7,13 @@ public class ThietBi {
 	private String tenTB;
 	private int maLoaiTB;
 	private Date ngayNhap;
-	
+	private int TinhTrang;
 	private ThietBi(Builder builder) {
 		maTB = builder.maTB;
 		tenTB = builder.tenTB;
 		maLoaiTB = builder.maLoaiTB;
 		ngayNhap = builder.ngayNhap;
+		TinhTrang = builder.TinhTrang;
 	}
 	
 	public static class Builder {
@@ -20,6 +21,7 @@ public class ThietBi {
 		private String tenTB;
 		private int maLoaiTB;
 		private Date ngayNhap;
+		private int TinhTrang;
 		
 		public Builder() {
 			
@@ -48,6 +50,15 @@ public class ThietBi {
 			this.ngayNhap = ngayNhap;
 			return this;
 		}
+
+		public int getTinhTrang() {
+			return TinhTrang;
+		}
+
+		public void setTinhTrang(int tinhTrang) {
+			TinhTrang = tinhTrang;
+		}
+		
 	}
 
 	public int getMaTB() {
@@ -81,7 +92,15 @@ public class ThietBi {
 	public void setNgayNhap(Date ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
+	
+	public int getTinhTrang() {
+		return TinhTrang;
+	}
 
+	public void setTinhTrang(int tinhTrang) {
+		TinhTrang = tinhTrang;
+	}
+	
 	@Override
 	public String toString() {
 		return "ThietBi [maTB=" + maTB + ", tenTB=" + tenTB + ", maLoaiTB=" + maLoaiTB + ", ngayNhap=" + ngayNhap + "]";

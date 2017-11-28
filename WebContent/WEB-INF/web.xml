@@ -170,6 +170,14 @@
     <url-pattern>/baoduong</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>BaoDuongChiTietController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongChiTietController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongChiTietController</servlet-name>
+    <url-pattern>/baoduong-chitiet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BaoDuongThemThietBiController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongThemThietBiController</servlet-class>
   </servlet>
@@ -192,5 +200,45 @@
   <servlet-mapping>
     <servlet-name>BaoDuongDangKyController</servlet-name>
     <url-pattern>/baoduong-dangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongPostDangKyController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongPostDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongPostDangKyController</servlet-name>
+    <url-pattern>/baoduong/dangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongHuyDangKyController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongHuyDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongHuyDangKyController</servlet-name>
+    <url-pattern>/baoduong/huydangky</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>BaoDuongHoanTatController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongHoanTatController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongHoanTatController</servlet-name>
+    <url-pattern>/baoduong/hoantat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongTienHanhController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongTienHanhController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongTienHanhController</servlet-name>
+    <url-pattern>/baoduong/tienhanh</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuong404Controller</servlet-name>
+    <servlet-class>baoDuongController.BaoDuong404Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuong404Controller</servlet-name>
+    <url-pattern>/baoduong/not-found</url-pattern>
   </servlet-mapping>
 </web-app>
