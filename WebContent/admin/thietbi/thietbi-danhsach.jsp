@@ -1,7 +1,13 @@
+<%@page import="beans.LoaiThietBi"%>
+<%@page import="beans.ThietBi"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/partial/header.jsp"%>
 <!-- Body -->
+<%
+	ArrayList<ThietBi> alThietBi = (ArrayList<ThietBi>) request.getAttribute("alThietBi");
+%>
 
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -10,11 +16,23 @@
 			<li class="breadcrumb-item"><a href="#">Thiết bị</a></li>
 			<li class="breadcrumb-item active">Danh sách</li>
 		</ol>
+		<%if (request.getParameter("addmsg") != null && request.getParameter("addmsg").equals("1")) {%>
+				<div class="alert alert-success">Thêm thành công</div>
+			<%}%>
+		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("1")) {%>
+				<div class="alert alert-success">Xóa thành công</div>
+			<%}%>
+		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Xóa thất bại</div>
+			<%}%>
+		<%if (request.getParameter("editmsg") != null && request.getParameter("editmsg").equals("1")) {%>
+				<div class="alert alert-success">Chỉnh sửa thành công</div>
+			<%}%>
 		<div class="col-md-12" style="margin-bottom: 10px">
 			<div class="col-md-6" style="margin-bottom: 10px">
-				<a href="<%=request.getContextPath()%>/thietbi-them"
+				<a href="<%=request.getContextPath()%>/thietbi-them?type=load"
 					class="btn btn-success">THÊM THIẾT BỊ</a> <a
-					href="<%=request.getContextPath()%>/thietbi-timkiem"
+					href="<%=request.getContextPath()%>/thietbi-timkiem?type=load"
 					class="btn btn-primary"><i class="fa fa-search"
 					aria-hidden="true"></i>TÌM KIẾM</a>
 			</div>
@@ -32,19 +50,21 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% for(ThietBi item: alThietBi) { %>
 					<tr>
-						<td>1</td>
-						<td>Máy chiếu</td>
-						<td>Canon Projecter</td>
-						<td class="text-center">5/5/2015</td>
+						<td><%=item.getMaTB() %></td>
+						<td><%=item.getTenTB() %></td>
+						<td><%=item.getObjLoaiTB().getTenLoai() %></td>
+						<td class="text-center"><%=item.getNgayNhap() %></td>
 						<td class="text-center"><a
-							href="<%=request.getContextPath()%>/thietbi-sua"
+							href="<%=request.getContextPath()%>/thietbi-sua?type=load&id=<%=item.getMaTB() %>"
 							class="btn btn-warning">Sửa</a> <a
-							href="<%=request.getContextPath()%>/thietbi-xoa"
+							href="<%=request.getContextPath()%>/thietbi?type=del&id=<%=item.getMaTB() %>"
 							class="btn btn-danger">Xóa</a> <a
-							href="<%=request.getContextPath()%>/thietbi-chitiet"
+							href="<%=request.getContextPath()%>/thietbi-chitiet?id=<%=item.getMaTB() %>"
 							class="btn btn-success">Chi tiết</a>
 					</tr>
+					<%} %>
 				</tbody>
 			</table>
 		</div>
@@ -61,4 +81,4 @@
 		<!-- Start footer -->
 		<%@include file="/partial/footer.jsp"%>
 	</footer>
-	</td>
+</div>

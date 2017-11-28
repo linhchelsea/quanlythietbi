@@ -41,6 +41,8 @@ public class DangKySuDungController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		
 		LibraryFormatDateTime lbDateTime = new LibraryFormatDateTime();
 		loaithietbiModels mLoaiTB = new loaithietbiModels();
 		thongtindangkyModels mTTDK = new thongtindangkyModels();
@@ -64,9 +66,9 @@ public class DangKySuDungController extends HttpServlet {
 					.setMucDichSuDung(mucDichSuDung)
 					.build();
 			if(mTTDK.ThemDangKy(objTTDK) == 1) {
-				response.sendRedirect(request.getContextPath() + "/cnnm-danhsachthietbi");
+				response.sendRedirect(request.getContextPath() + "/cnnm-danhsachthietbi?msgdangky=1");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/cnnm-dangkysudung?type=load&maLoaiTB=" + maLoai);
+				response.sendRedirect(request.getContextPath() + "/cnnm-dangkysudung?msgdangky=0&type=load&maLoaiTB=" + maLoai);
 			}
 		} else {
 			int maLoaiTB = Integer.parseInt(request.getParameter("maLoaiTB"));

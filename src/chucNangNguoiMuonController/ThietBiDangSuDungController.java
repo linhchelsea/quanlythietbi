@@ -1,8 +1,7 @@
-package thietBiController;
+package chucNangNguoiMuonController;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.LoaiThietBi;
-import beans.ThietBi;
+import beans.ThongTinDangKy;
+import beans.ThongTinSuDung;
 import models.loaithietbiModels;
 import models.thietbiModels;
+import models.thongtindangkyModels;
+import models.thongtinsudungModels;
 
 /**
- * Servlet implementation class ThietBiThemController
+ * Servlet implementation class DanhSachThietBiController
  */
-public class ThietBiChiTietController extends HttpServlet {
+public class ThietBiDangSuDungController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThietBiChiTietController() {
+    public ThietBiDangSuDungController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,33 +35,23 @@ public class ThietBiChiTietController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+		doPost(request, response);	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
 		
-		//Tìm thiết bị
-		int id = Integer.parseInt(request.getParameter("id"));
-		thietbiModels tbModels = new thietbiModels();
-		ThietBi thietbi = tbModels.getById(id);
-		//Tìm tên loại thiết bị
-		String tenLoaiTB = "";
-		loaithietbiModels loaithietbiModels = new loaithietbiModels();
-		ArrayList<LoaiThietBi> listLoaiTB = loaithietbiModels.getList();
-		for (LoaiThietBi loaiThietBi : listLoaiTB) {
-			if (loaiThietBi.getMaLoai()==thietbi.getMaLoaiTB()) {
-				tenLoaiTB = loaiThietBi.getTenLoai();
-				break;
-			}
-		}
+		int maND = 5;
 		
-		request.setAttribute("tb", thietbi);
-		request.setAttribute("tenloai", tenLoaiTB);
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/thietbi/thietbi-chitiet.jsp");
+		//Lay danh sach TTSD
+		thongtinsudungModels mTTSD = new thongtinsudungModels();
+		ArrayList<ThongTinSuDung> alTTSD = mTTSD.getListByMaND(maND);
+		
+		request.setAttribute("alTTSD", alTTSD);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/chucnangnguoimuon/thietbidangsudung.jsp");
 		rd.forward(request, response);
 	}
-
 }

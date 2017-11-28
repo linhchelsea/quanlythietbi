@@ -15,6 +15,11 @@
           <a href="#">Đăng ký sử dụng</a>
         </li>
       </ol>
+      
+			<%if (request.getParameter("msgdangky") != null && request.getParameter("msgdangky").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Đăng ký không thành công</div>
+			<%}%>
+      
       <%LibraryFormatDateTime lbDateTime = new LibraryFormatDateTime();
       
       LoaiThietBi loaiTB = (LoaiThietBi) request.getAttribute("loaiTB");
