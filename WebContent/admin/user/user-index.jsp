@@ -1,3 +1,5 @@
+<%@page import="beans.NguoiDung"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/partial/header.jsp" %>
@@ -12,6 +14,11 @@
         </li>
         <li class="breadcrumb-item active">Danh sách</li>
       </ol>
+      <%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("1")) {%>
+				<div class="alert alert-success">Xóa thành công</div>
+			<%}%>
+		<%if (request.getParameter("delmsg") != null && request.getParameter("delmsg").equals("0")) {%>
+				<div class="alert alert-danger" style="color: red">Xóa thất bại</div> <%} %>
       <div class="col-md-12" style="margin-bottom: 10px">
       	<a href="<%= request.getContextPath() %>/user-create" class="btn btn-success">THÊM NGƯỜI DÙNG</a>
       </div>
@@ -29,17 +36,23 @@
                 </tr>
               </thead>
               <tbody>
+              <%ArrayList<NguoiDung> listND = (ArrayList<NguoiDung>) request.getAttribute("listND");
+              for (NguoiDung nd: listND) {%>
                 <tr>
-                  <td>1</td>
-                  <td>linhchelsea</td>
-                  <td>Nguyễn Mạnh Linh</td>
-                  <td>21/10/1995</td>
-                  <td>SuperAdmin</td>
-                  <td>Quản trị</td>
+                  <td><%=nd.getMaND() %></td>
+                  <td><%=nd.getTenDangNhap() %></td>
+                  <td><%=nd.getTenND() %></td>
+                  <td><%=nd.getNgaySinh() %></td>
+                  <%if (nd.getPhanQuyen()==1){ %><td>Người mượn</td> <%} %>
+                  <% if (nd.getPhanQuyen()==2){ %><td>Nhân viên</td> <%} %>
+                  <% if (nd.getPhanQuyen()==3){ %><td>Quản trị viên</td> <%} %>
+                  <td><%=nd.getObjPhongBan().getTenPhongBan() %></td>
                   <td class="text-center">
-          			<a href="<%= request.getContextPath() %>/user-edit" class="btn btn-success">Chi tiết</a>
+          			<a href="<%= request.getContextPath() %>/user-edit?id=<%=nd.getMaND() %>" class="btn btn-success">Sửa</a>
+          			<a href="<%= request.getContextPath() %>/user-delete?id=<%=nd.getMaND() %>" class="btn btn-danger">Xóa</a>
                   </td>
                 </tr>
+                <%} %>
               </tbody>
             </table>
           </div>
