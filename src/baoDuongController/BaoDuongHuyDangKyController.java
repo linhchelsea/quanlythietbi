@@ -1,6 +1,7 @@
-package sdtbController;
+package baoDuongController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,17 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.ThietBi;
+import beans.ThongTinBaoDuong;
+import models.baoduongModel;
+import models.thietbiModels;
+
 /**
- * Servlet implementation class sdtbIndexController
+ * Servlet implementation class BaoDuongIndexController
  */
 
-public class sdtbIndexController extends HttpServlet {
+public class BaoDuongHuyDangKyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sdtbIndexController() {
+    public BaoDuongHuyDangKyController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,8 +41,21 @@ public class sdtbIndexController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sudungthietbi/sdtb-danhsach.jsp");
-		rd.forward(request, response);
+		baoduongModel bdModel = new baoduongModel();
+		int ttbd = Integer.parseInt(request.getParameter("ttbd"));
+		ThongTinBaoDuong baoDuong = bdModel.getTTBD(ttbd);
+		if(baoDuong == null) {
+			response.sendRedirect(request.getContextPath()+"/baoduong?err=0");
+			return;
+		}
+		if(baoDuong.getTinhTrang() != 1) {
+			response.sendRedirect(request.getContextPath()+"/baoduong-capnhat?ttbd="+ttbd+"&err=1");
+			return;
+		}
+	
+		boolean huy = bdModel.huyDKBD(ttbd);
+		response.sendRedirect(request.getContextPath()+"/baoduong?huy="+huy);
+		return;
 	}
 
 }

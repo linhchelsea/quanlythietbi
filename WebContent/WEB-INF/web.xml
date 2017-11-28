@@ -194,12 +194,84 @@
     <url-pattern>/cnnm-chitietsudung</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>PheDuyetDangKyController</servlet-name>
+    <servlet-class>quanLySuDungController.PheDuyetDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PheDuyetDangKyController</servlet-name>
+    <url-pattern>/qlsd-pheduyetdangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DanhSachTrungController</servlet-name>
+    <servlet-class>quanLySuDungController.DanhSachTrungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanhSachTrungController</servlet-name>
+    <url-pattern>/qlsd-danhsachtrung</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PheDuyetController</servlet-name>
+    <servlet-class>quanLySuDungController.PheDuyetController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PheDuyetController</servlet-name>
+    <url-pattern>/qlsd-pheduyet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TuChoiController</servlet-name>
+    <servlet-class>quanLySuDungController.TuChoiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TuChoiController</servlet-name>
+    <url-pattern>/qlsd-tuchoi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CapNhatSuDungController</servlet-name>
+    <servlet-class>quanLySuDungController.CapNhatSuDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CapNhatSuDungController</servlet-name>
+    <url-pattern>/qlsd-capnhatsudung</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThietBiKhaDungController</servlet-name>
+    <servlet-class>quanLySuDungController.ThietBiKhaDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThietBiKhaDungController</servlet-name>
+    <url-pattern>/qlsd-thietbikhadung</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BanGiaoController</servlet-name>
+    <servlet-class>quanLySuDungController.BanGiaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BanGiaoController</servlet-name>
+    <url-pattern>/qlsd-bangiao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>KetThucSuDungController</servlet-name>
+    <servlet-class>quanLySuDungController.KetThucSuDungController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KetThucSuDungController</servlet-name>
+    <url-pattern>/qlsd-ketthucsudung</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <servlet-class>baoDuongController.BaoDuongIndexController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BaoDuongIndexController</servlet-name>
     <url-pattern>/baoduong</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongChiTietController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongChiTietController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongChiTietController</servlet-name>
+    <url-pattern>/baoduong-chitiet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>BaoDuongThemThietBiController</servlet-name>
@@ -224,5 +296,45 @@
   <servlet-mapping>
     <servlet-name>BaoDuongDangKyController</servlet-name>
     <url-pattern>/baoduong-dangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongPostDangKyController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongPostDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongPostDangKyController</servlet-name>
+    <url-pattern>/baoduong/dangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongHuyDangKyController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongHuyDangKyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongHuyDangKyController</servlet-name>
+    <url-pattern>/baoduong/huydangky</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>BaoDuongHoanTatController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongHoanTatController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongHoanTatController</servlet-name>
+    <url-pattern>/baoduong/hoantat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuongTienHanhController</servlet-name>
+    <servlet-class>baoDuongController.BaoDuongTienHanhController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuongTienHanhController</servlet-name>
+    <url-pattern>/baoduong/tienhanh</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BaoDuong404Controller</servlet-name>
+    <servlet-class>baoDuongController.BaoDuong404Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoDuong404Controller</servlet-name>
+    <url-pattern>/baoduong/not-found</url-pattern>
   </servlet-mapping>
 </web-app>
