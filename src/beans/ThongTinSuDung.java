@@ -10,6 +10,7 @@ public class ThongTinSuDung {
 	private int maNguoiPheDuyet;
 	private Timestamp batDauSuDung;
 	private Timestamp ketThucSuDung;
+	private int soLuongMuon;
 	private int tinhTrang;
 	private ThongTinDangKy objTTDK;
 	private NguoiDung objNguoiMuon;
@@ -23,6 +24,7 @@ public class ThongTinSuDung {
 		maNguoiPheDuyet = builder.maNguoiPheDuyet;
 		batDauSuDung = builder.batDauSuDung;
 		ketThucSuDung = builder.ketThucSuDung;
+		soLuongMuon = builder.soLuongMuon;
 		tinhTrang = builder.tinhTrang;
 		objTTDK = builder.objTTDK;
 		objNguoiMuon = builder.objNguoiMuon;
@@ -36,6 +38,7 @@ public class ThongTinSuDung {
 		private int maNguoiPheDuyet;
 		private Timestamp batDauSuDung;
 		private Timestamp ketThucSuDung;
+		private int soLuongMuon;
 		private int tinhTrang;
 		private ThongTinDangKy objTTDK;
 		private NguoiDung objNguoiMuon;
@@ -76,6 +79,11 @@ public class ThongTinSuDung {
 
 		public Builder setKetThucSuDung(Timestamp ketThucSuDung) {
 			this.ketThucSuDung = ketThucSuDung;
+			return this;
+		}
+		
+		public Builder setSoLuongMuon(int soLuongMuon) {
+			this.soLuongMuon = soLuongMuon;
 			return this;
 		}
 
@@ -156,6 +164,14 @@ public class ThongTinSuDung {
 		this.tinhTrang = tinhTrang;
 	}
 
+	public int getSoLuongMuon() {
+		return soLuongMuon;
+	}
+
+	public void setSoLuongMuon(int soLuongMuon) {
+		this.soLuongMuon = soLuongMuon;
+	}
+
 	public ThongTinDangKy getObjTTDK() {
 		return objTTDK;
 	}
@@ -184,7 +200,7 @@ public class ThongTinSuDung {
 	public String toString() {
 		return "ThongTinSuDung [maTTSD=" + maTTSD + ", maTTDK=" + maTTDK + ", maNguoiMuon=" + maNguoiMuon
 				+ ", maNguoiPheDuyet=" + maNguoiPheDuyet + ", batDauSuDung=" + batDauSuDung + ", ketThucSuDung="
-				+ ketThucSuDung + ", tinhTrang=" + tinhTrang + ", objTTDK=" + objTTDK + ", objNguoiMuon=" + objNguoiMuon
-				+ ", objNguoiPheDuyet=" + objNguoiPheDuyet + "]";
+				+ ketThucSuDung + ", soLuongMuon=" + soLuongMuon + ", tinhTrang=" + tinhTrang + ", objTTDK=" + objTTDK
+				+ ", objNguoiMuon=" + objNguoiMuon + ", objNguoiPheDuyet=" + objNguoiPheDuyet + "]";
 	}
 }

@@ -106,7 +106,7 @@ public class thongtinsudungModels {
 		public int getSoLuongDangSuDung(int maLoai, Timestamp batDau, Timestamp ketThuc) {
 			int soLuong = 0;
 			conn = lcdb.GetConnectMySQL();
-			String query = "SELECT SUM(ThongTinDangKy.SoLuongDK) AS SOLUONG FROM ThongTinSuDung\n" + 
+			String query = "SELECT SUM(ThongTinSuDung.SoLuongMuon) AS SOLUONG FROM ThongTinSuDung\n" + 
 					"INNER JOIN ThongTinDangKy ON ThongTinSuDung.MaTTDK = ThongTinDangKy.MaTTDK\n" + 
 					"WHERE ThongTinSuDung.TinhTrang <>3 \n" + 
 					"AND ThongTinDangKy.MaLoaiTB = ? \n" + 
@@ -205,6 +205,57 @@ public class thongtinsudungModels {
 				pst.setInt(3, objTTSD.getMaNguoiPheDuyet());
 				pst.setTimestamp(4, objTTSD.getBatDauSuDung());
 				pst.setTimestamp(5, objTTSD.getKetThucSuDung());
+				pst.executeUpdate();
+				result = 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return result;
+		}
+		
+		//Sua tinh trang TTSD
+		public int SuaTinhTrang(int tinhTrang, int maTTSD) {
+			int result = 0;
+			conn = lcdb.GetConnectMySQL();
+			String query = "UPDATE `ThongTinSuDung` SET `TinhTrang` = ? WHERE `ThongTinSuDung`.`MaTTSD` = ?";
+			try {
+				pst = conn.prepareStatement(query);
+				pst.setInt(1, tinhTrang);
+				pst.setInt(2, maTTSD);
+				pst.executeUpdate();
+				result = 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return result;
+		}
+
+		public int UpdateSoLuongMuon(int maTTSD, int soLuong) {
+			int result = 0;
+			conn = lcdb.GetConnectMySQL();
+			String query = "UPDATE `ThongTinSuDung` SET `SoLuongMuon` = ? WHERE `ThongTinSuDung`.`MaTTSD` = ?";
+			try {
+				pst = conn.prepareStatement(query);
+				pst.setInt(1, soLuong);
+				pst.setInt(2, maTTSD);
 				pst.executeUpdate();
 				result = 1;
 			} catch (SQLException e) {

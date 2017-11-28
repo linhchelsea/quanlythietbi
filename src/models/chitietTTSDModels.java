@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import beans.ChiTietTTSD;
 import beans.ThietBi;
 import beans.ThongTinBaoDuong;
+import beans.ThongTinDangKy;
 import library.LibraryConnectDB;
 
 public class chitietTTSDModels {
@@ -59,4 +60,33 @@ public class chitietTTSDModels {
 		}
 		return alChiTietTTSD;
 	}
+	
+	// Ban giao - them chi tiet su dung moi
+		public int ThemChiTietSudung(int maTTSD, int[] maTB, int maLoaiTB) {
+			int result = 0;
+			conn = lcdb.GetConnectMySQL();
+			String query = "INSERT INTO `ChiTietTTSD` "
+					+ "(`MaTTSD`, `MaTB`, `MaLoaiTB`) VALUES ";
+			for (int i = 0; i < maTB.length; i++) {
+				query += "(" + maTTSD + ", " + maTB[i] + ", " + maLoaiTB +"),";
+			}
+			query = query.substring(0, query.length() - 1);
+			try {
+				pst = conn.prepareStatement(query);
+				pst.executeUpdate();
+				result = 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return result;
+		}
 }
